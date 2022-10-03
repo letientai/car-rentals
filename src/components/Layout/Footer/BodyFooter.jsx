@@ -95,7 +95,7 @@ const BodyFooter = () => {
                     <div className='payment__options' >
                         {paymentImgs.map((img, index)=>{
                             return (
-                                <div className='option' >
+                                <div key={index} className='option' >
                                     <img src={img} alt="img pay ment" />
                                 </div>
                             )
