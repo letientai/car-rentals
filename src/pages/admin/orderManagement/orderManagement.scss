@@ -1,0 +1,29 @@
+.orderManagement-container {
+  width: 100%;
+  background-color: white;
+  margin-top: 30px;
+  padding: 20px;
+  position: relative;
+  .tableOrder {
+    .productRow {
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+    // border: 1px solid black;
+    padding: 2px;
+    overflow-y: scroll;
+    height: 470px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .action {
+    display: flex !important;
+    justify-content: space-evenly;
+    .icon-action {
+      cursor: pointer;
+    }
+  }
+}

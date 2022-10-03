@@ -1,0 +1,96 @@
+.formDetail-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 51;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0;
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    .formDetai{
+      animation: upToDown ease 500ms;
+      width: 70%;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      background-color: white;
+      margin: auto;
+      padding: 20px;
+      .header{
+        border-bottom: 1px solid rgb(214, 214, 214);
+      }
+      .content{
+        width: 100%;
+        margin-left: 0 !important;
+        .row{
+          margin: 10px 0;
+          font-family: 'Courier New', Courier, monospace;
+          .card-item{
+            background-color: #f1f1f1;
+            margin: 5px 0;
+            padding: 5px;
+          }
+          .select-status{
+            width: 130px;
+            margin-top: -5px;
+            margin-left: 10px;
+            height: 30px;
+          }
+        }
+        .row-btn{
+          display: flex;
+          padding-top: 10px;
+          border-top: 1px solid rgb(194, 194, 194);
+          justify-content: flex-end;
+          .groupBtn{
+            width: 25%;
+            display: flex;
+            justify-content: space-between;
+            .btn{
+              width: 47%;
+              height: 40px;
+              border: none;
+              cursor: pointer;
+            }
+            .btn-update{
+              background-color: rgb(70, 70, 70);
+              color: white;
+              &:hover{
+                background-color: rgb(24, 24, 24);
+              }
+            }
+            .btn-cancel{
+              background-color: rgb(255, 255, 255);
+              border: 1px solid rgb(189, 189, 189);
+              &:hover{
+                background-color: rgb(238, 238, 238);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @keyframes upToTop {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes UpToDown {
+    from {
+      transform: translateY(-200px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

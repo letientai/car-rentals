@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import {createGlobalStyle} from "styled-components"
 import styled from "styled-components";
 const GlobalStyles = createGlobalStyle`
     body , html{
@@ -6,6 +6,9 @@ const GlobalStyles = createGlobalStyle`
         padding : 0;
         font-family: 'Montserrat', sans-serif;
         font-size: 16px;
+    }
+    #root {
+        overflow : hidden;
     }
     .app{
         background-color : #fafbfd;
@@ -17,14 +20,13 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
     }
     :root{
-        --background-color: #abc9b4;
-        --background-btn : #77ACB7;
-        --txt-color : #232323;
+        --background-btn-primary : #009548;
         --txt-primary-color : #00a550;
+        --txt-title-color : #6e6e6e;
         --boder-color : #d8e0db;
         --hover-color : #00a550;
     }
-    ul , li {
+    ul , li ,p{
         margin : 0;
         padding : 0;
         list-style: none;
