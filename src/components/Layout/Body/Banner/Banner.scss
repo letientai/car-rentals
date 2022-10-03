@@ -1,0 +1,68 @@
+.banner{
+    position: relative;
+    .banner__img{
+        background-image: url("https://n1-cstg.mioto.vn/7/cho_thue_xe_du_lich_hn/ha_noi/p/m/cities/HaNoi_cover.jpg");
+        padding-top: 50%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .banner__form{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        .wrap__form{
+            margin: auto;
+            .form__title{
+                max-width: 400px;
+                font-size: 20px;
+                text-align: center;
+                color: #e5e6e9;
+                font-weight: 600;
+                margin-bottom: 60px;
+            }
+            .banner__search{
+                background-color: rgba(0, 0, 0, .5);
+                color: #ffffff;
+
+                padding: 20px;
+                .search__form{
+                    background-color: rgba(0, 0, 0, .8);
+                    padding: 20px;
+                    .form__group{
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 20px;
+                        > label{
+                            color: var(--txt-primary-color);
+                        }
+                        > input{
+                            color: #ffffff;
+                            background-color: transparent;
+                            font-size: 16px;
+                            padding-left: 20px;
+                            &::placeholder{
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                    .btn__search{
+                        width: 100%;
+                        background-color: #ffffff;
+                        color: var(--txt-primary-color);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        > span{
+                            font-size: 16px;
+                            padding: 10px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

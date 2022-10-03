@@ -6,7 +6,10 @@ import bell from "../../../assets/admin/img/icon-bell.svg";
 import product from "../../../assets/admin/img/product.svg";
 import voucher from "../../../assets/admin/img/home.svg";
 import order from "../../../assets/admin/img/order.png";
+import { useNavigate } from "react-router-dom";
 export const Sidebar = () => {
+  const navigate = useNavigate();
+
   const data = [
     {
       name: "Tổng quan",
@@ -21,7 +24,7 @@ export const Sidebar = () => {
       img: product,
     },
     {
-      name: "Đơn hàng",
+      name: "Đơn thuê",
       img: order,
     },
     {
@@ -37,11 +40,33 @@ export const Sidebar = () => {
       img: bell,
     },
   ];
+
+  const moveToOverview = () => {
+    navigate("/admin");
+  };
+
+  const moveToItem = (item) => {
+    switch (item.name) {
+      case "Tổng quan":
+        navigate("/admin");
+        break;
+      case "Đơn thuê":
+        navigate("/order-management");
+        break;
+      case "Sản phẩm":
+        navigate("/product-management");
+        break;
+      default:
+      // code block
+    }
+  };
   return (
     <div className="sidebar__container ">
       <div className="sidebar__logo">
         {/* <img src={logo} alt="" /> */}
-        <p>M<span>I</span>OTO</p>
+        <p onClick={moveToOverview}>
+          M<span>I</span>OTO
+        </p>
       </div>
       <div className="ReactCollapse--collapse">
         <div className="ReactCollapse--content">
@@ -49,6 +74,7 @@ export const Sidebar = () => {
             <div
               className="dropdownmenu"
               key={index}
+              onClick={(e) => moveToItem(item)}
             >
               <img src={item.img} alt="" />
               <div className="name">{item.name}</div>

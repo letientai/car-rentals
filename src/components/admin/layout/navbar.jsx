@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import "./layout.scss"
-export const Navbar = () => {
-const [profileToggle, setProfileToggle] = useState(false);
+import "./layout.scss";
+export const Navbar = (prop) => {
+  const [profileToggle, setProfileToggle] = useState(false);
+  const [checkOpenSidebar, setCheckOpenSidebar] = useState(false);
   const headerRef = useRef();
 
   const handleClickOutside = (event) => {
@@ -19,12 +20,15 @@ const [profileToggle, setProfileToggle] = useState(false);
       document.addEventListener("click", handleClickOutside, true);
     }
   }
-
+  const openSidebar = () => {
+    setCheckOpenSidebar(!checkOpenSidebar);
+    prop.handleSidebar(!checkOpenSidebar);
+  };
   return (
     <div className="navbar-header">
       <div className="container-fluid">
         <div>
-          <div className="sidenav-toggler">
+          <div className="sidenav-toggler" onClick={openSidebar}>
             <div className="sidenav-toggler-inner">
               <i className="sidenav-toggler-line"></i>
               <i className="sidenav-toggler-line"></i>
@@ -59,11 +63,11 @@ const [profileToggle, setProfileToggle] = useState(false);
             </div>
             <div className="dropdown-divider"></div>
             <a
-              href="/bidu-ecommerce"
-            //   onClick={(e) => {
-            //     // e.preventDefault();
-            //     logout();
-            //   }}
+              href="#"
+              //   onClick={(e) => {
+              //     // e.preventDefault();
+              //     logout();
+              //   }}
               className="dropdown-item"
             >
               <span>Đăng xuất</span>

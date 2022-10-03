@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./chart.scss";
 import Chart from "react-apexcharts";
 import Select from "react-select";
 
@@ -59,7 +58,6 @@ export const ChartStatistical = () => {
   ];
 
   const handleChange = (selectedOption) => {
-    console.log(`Option selected:`, selectedOption);
     setOptionChart(selectedOption.value)
   };
 
