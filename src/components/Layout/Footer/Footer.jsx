@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React from 'react';
+import BannerFooter from './BannerFooter';
+import BodyFooter from './BodyFooter';
+import "./Footer.scss";
 const Footer = () => {
   return (
-    <div>
-      Footer
+    <div className='footer' >
+      <BannerFooter/>
+      <BodyFooter/>
     </div>
   )
 }
