@@ -1,8 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {Routes , Route} from 'react-router-dom';
+import { getCarsApi } from './api/carRequest';
 import DefaultLayout from './components/CustomLayout/DefaultLayout';
+import Overlay from './components/Global/Overlay/Overlay';
+import {overlaySelector } from './redux';
 import routes from './routers';
 const App = () => {
+  const dispatch = useDispatch();
+  const overlay = useSelector(overlaySelector);
+  useEffect(()=>{
+    getCarsApi(dispatch);
+  },[])
   return (
     <div >
       <Routes>
@@ -26,6 +35,7 @@ const App = () => {
           )
         })}
       </Routes>
+      {overlay.displayOverlay && <Overlay chilren={overlay.itemPropOverlay} />}
     </div>
   )
 }
