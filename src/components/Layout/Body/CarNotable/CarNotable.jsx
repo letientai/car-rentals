@@ -1,5 +1,7 @@
 import { Container } from '@mui/system';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { carSelector } from '../../../../redux';
 import CarCard from '../../../Global/CarCard';
 import SliderCustom from '../../../Global/Slider/SliderCustom';
 import "./CarNotable.scss";
@@ -106,17 +108,25 @@ const car = [
 const settings ={
     arrows : false,
 }
+
 const CarNotable = () => {
+    const {getCars} = useSelector(carSelector);
+    console.log(getCars.values);
   return (
     <Container maxWidth='lg' className='car__notable'>
-      <h3 className='car__notable__title' >XE NỔI BẬT - XE TỰ LÁI</h3>
-        <SliderCustom customSetting={settings} >
-            {car.map((item , index)=>{
-                return (
-                    <CarCard key={index} itemCar={item} />
-                )
-            })}
-        </SliderCustom>
+        {getCars.isLoading?
+            <div>Loading</div>:
+            <>
+                <h3 className='car__notable__title' >XE NỔI BẬT - XE TỰ LÁI</h3>
+                <SliderCustom customSetting={settings} >
+                    {getCars.values?.map((item , index)=>{
+                        return (
+                            <CarCard key={index} itemCar={item} />
+                        )
+                    })}
+                </SliderCustom>
+            </>
+        }
     </Container>
   )
 }

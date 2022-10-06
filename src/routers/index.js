@@ -5,13 +5,11 @@ import { Overview } from "../pages/admin/overview/overview";
 import { ProductDetail } from "../pages/admin/productDetail/productDetail";
 import { ProductManagement } from "../pages/admin/productmanagement/productManagement";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
 import Register from "../pages/Register";
 
 const routes = () => {
   const publicRoutes = [
     { path: "/", component: Home },
-    { path: "login", component: Login },
     { path: "register", component: Register },
     { path: "admin", component: Overview, Layout: LayoutAdmin },
     {

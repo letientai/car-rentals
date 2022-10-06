@@ -1,13 +1,19 @@
 import React from 'react'
 import PhoneIcon from '@mui/icons-material/Phone';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import { useNavigate } from 'react-router-dom';
 
 
 const ContactNav = () => {
+  const navigate = useNavigate();
   return (
     <>
         <div className='logo' >
-          <div className='logo__img' ></div>
+          <div
+          onClick={()=>{
+            navigate('/');
+          }}
+          className='logo__img' ></div>
         </div>
         <div className='contact' >
           <div className='contact__phone' >
