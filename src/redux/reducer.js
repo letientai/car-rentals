@@ -1,4 +1,4 @@
-import { SET_DISPLAY_OVERLAY, SET_ITEM_CAR, SET_ITEM_PROP_OVERLAY, SET_LOADING_GET_CAR } from "./constants";
+import { SET_DISPLAY_OVERLAY, SET_ITEM_CAR, SET_ITEM_PROP_OVERLAY, SET_LOADING_GET_CAR, SET_LOGIN_FAILED, SET_LOGIN_START, SET_LOGIN_SUCCESS, SET_REGISTER_FAILED, SET_REGISTER_START, SET_REGISTER_SUCCESS } from "./constants";
 
 const initialState = {
     overlay : {
@@ -10,6 +10,16 @@ const initialState = {
             isLoading : false,
             values : null,
         }
+    },
+    register : {
+        isLoading : false,
+        error : null,
+        success : false,
+    },
+    login : {
+        currentUser : null,
+        isLoading : false,
+        error : null,
     }
    
 }
@@ -52,6 +62,61 @@ const rootReducer = (state = initialState , action) => {
                         ...state.car.getCars,
                         values : action.payload
                     }
+                }
+            }
+        case SET_REGISTER_START:
+            return {
+                ...state,
+                register : {
+                    ...state.register,
+                    isLoading : true,
+                }
+            }
+        case SET_REGISTER_SUCCESS:
+            return {
+                ...state,
+                register : {
+                    ...state.register,
+                    isLoading : false,
+                    currentUser : true,
+                    error : null,
+                }
+            }
+        case SET_REGISTER_FAILED:
+            return {
+                ...state,
+                register : {
+                    ...state.register,
+                    isLoading : false,
+                    error : true,
+                }
+            }
+        case SET_LOGIN_START:
+            return {
+                ...state,
+                register : {
+                    ...state.login,
+                    isLoading : true,
+                }
+            }
+        case SET_LOGIN_SUCCESS:
+            return {
+                ...state,
+                login : {
+                    ...state.login,
+                    isLoading : false,
+                    currentUser : action.payload,
+                    error : null,
+                }
+            }
+        case SET_LOGIN_FAILED:
+            return {
+                ...state,
+                login : {
+                    ...state.login,
+                    isLoading : false,
+                    currentUser : null,
+                    error : action.payload,
                 }
             }
         default:

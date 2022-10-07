@@ -11,6 +11,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import CloseIcon from '@mui/icons-material/Close';
 import { setDisplayOverlay, setItemPropOverlay } from '../../../redux';
+import authRequest from '../../../api/authRequest';
 const Login = () => {
 
 
@@ -30,7 +31,9 @@ const Login = () => {
           .matches(/^[0-9a-zA-Z]{8,}$/,'Mật khẩu phải chứa ít nhất 8 ký tự'),
     }),
     onSubmit: (userLogin)=>{
-
+      authRequest.loginUser(userLogin , dispatch);
+      dispatch(setDisplayOverlay(false));
+      dispatch(setItemPropOverlay(<></>));
     },
   });
   const handelBlurInput = (field)=>{

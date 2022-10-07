@@ -261,3 +261,22 @@
         }
     }
 }
+.login__succeeded{
+    display: flex;
+    .succeeded__info{
+        > svg {
+            color: var(--background-btn-primary);
+        }
+        padding: 200px 0 300px 0;
+        display: flex;
+        margin: auto;
+        max-width: 500px;
+        > p{
+            font-size: 15px;
+            > span{
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
+}

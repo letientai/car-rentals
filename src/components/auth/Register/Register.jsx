@@ -3,13 +3,14 @@ import '../Auth.scss';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../assets/css/globalStyles';
 import LocalPostOfficeOutlinedIcon from '@mui/icons-material/LocalPostOfficeOutlined';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import authRequest from '../../../api/authRequest';
+import { useNavigate } from 'react-router-dom';
 const RegisterConponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,8 +39,9 @@ const RegisterConponent = () => {
         .required("Trường này không được để trống")
         .oneOf([Yup.ref("password"), null], "Mật khẩu không trùng khớp"),
     }),
-    onSubmit: (userregister)=>{
-
+    onSubmit: (userRegister)=>{
+      const {passwordConfirm , ...userFormat} = userRegister;
+      authRequest.registerUser(userFormat,dispatch,navigate);
     },
   });
   const handelBlurInput = (field)=>{
@@ -117,7 +119,7 @@ const RegisterConponent = () => {
         </div>
         <div >
           <Button
-          className='btn__register disable'
+          className='btn__register'
           type='submit' 
           >Đăng ký</Button>
           <div className='anothe__register'>
