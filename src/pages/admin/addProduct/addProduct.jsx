@@ -1,20 +1,24 @@
-import React from 'react'
-import { FormInfo } from '../../../components/admin/formInfoProduct/formInfo'
-import "./addProduct.scss"
+import React, { useState } from "react";
+import { FormInfo } from "../../../components/admin/formInfoProduct/formInfo";
+import "./addProduct.scss";
+
+const axios = require('axios').default;
+
 export const AddProduct = () => {
+  const checkAddProduct = true;
+  const [btnAddProduct, setBtnAddproduct] = useState(false)
+  const addProduct = () =>{
+   setBtnAddproduct(!btnAddProduct)
+  }
   return (
     <div className="productDetail-container">
-    <div className="header d-flex ">
-      <p>NHẬP THÔNG TIN</p>
-      <div className="field">
-        <button type="submit" className="btn__update">
-          Thêm sản phẩm
-        </button>
+      <div className="header d-flex ">
+        <p>NHẬP THÔNG TIN</p>
+        
+      </div>
+      <div className="content">
+        <FormInfo checkAddProduct={checkAddProduct} btnAddProduct={btnAddProduct}/>
       </div>
     </div>
-    <div className="content">
-      <FormInfo />
-    </div>
-  </div>
-  )
-}
+  );
+};
