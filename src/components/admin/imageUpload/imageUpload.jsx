@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import ImageUploading from "react-images-uploading";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-export const ImageUpload = () => {
+export const ImageUpload = (prop) => {
   const [images, setImages] = useState([]);
   const maxNumber = 5;
-
+ 
   const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
     setImages(imageList);
+    console.log(imageList);
+    prop.listImg(imageList)
+    
   };
   return (
     <div className="imageUpload">
@@ -35,25 +36,26 @@ export const ImageUpload = () => {
               className="drop__image"
               style={isDragging ? { color: "red" } : undefined}
               {...dragProps}
+              onClick={onImageUpload}
             >
               <CloudUploadIcon className="icon__upload" />
-              <p>DROP HERE</p>
-              <div className="listImg">
-                  {imageList.map((image, index) => (
-                    <div
-                      key={index}
-                      className="image-item mx-2 my-2 position-relative"
-                    >
-                      <img src={image["data_url"]} alt="" width="100" />
-                      <div className="image-item__btn-wrapper">
-                        <HighlightOffIcon
-                          onClick={() => onImageRemove(index)}
-                          className="btn-delete"
-                        />
-                      </div>
-                    </div>
-                  ))}
-              </div>
+              <p>Click or drop here</p>
+            </div>
+            <div className="listImg">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="image-item mx-2 my-2 position-relative"
+                >
+                  <img src={image["data_url"]} alt="" width="100" />
+                  <div className="image-item__btn-wrapper">
+                    <HighlightOffIcon
+                      onClick={() => onImageRemove(index)}
+                      className="btn-delete"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
             <button onClick={onImageUpload} className="btn btn__upload">
               Upload image
