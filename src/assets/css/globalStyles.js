@@ -19,6 +19,9 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         font-family: 'Montserrat', sans-serif;
     }
+    @font-face {
+        display: block;
+      }
     :root{
         --background-btn-primary : #009548;
         --txt-primary-color : #00a550;
