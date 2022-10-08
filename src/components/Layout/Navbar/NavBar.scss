@@ -20,6 +20,7 @@
             width: 30%;
             height: 100%;
             .logo__img{
+                cursor: pointer;
                 height: 100%;
                 width: 100px;
                 background-image: url(../../../assets/img/navbar/logo.png);
@@ -52,6 +53,35 @@
             .auth__btn{
                 &:hover{
                     color: var(--hover-color);
+                }
+            }
+            .auth__user{
+                height: 100%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                position: relative;
+                > span{
+                    margin: 0 10px;
+                }
+                .auth__user--custom{
+                    position: absolute;
+                    background-color: #f8f9fb;
+                    top: 100%;
+                    width: 200%;
+                    color: #FFFFFF;
+                    background-color: #141414;
+                    right: 0;
+                    z-index: 1;
+                    display: none;
+                    transition: all 10s linear ;
+                    > li{
+                        padding: 10px 20px;
+                        &:hover{
+                            cursor: pointer;
+                            background-color: rgba(32, 31, 31 , .5);
+                        }
+                    }
                 }
             }
         }

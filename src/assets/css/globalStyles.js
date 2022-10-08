@@ -1,5 +1,5 @@
 import {createGlobalStyle} from "styled-components"
-import styled from "styled-components";
+import styled ,{keyframes}from "styled-components";
 const GlobalStyles = createGlobalStyle`
     body , html{
         margin : 0; 
@@ -19,6 +19,9 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         font-family: 'Montserrat', sans-serif;
     }
+    @font-face {
+        display: block;
+      }
     :root{
         --background-btn-primary : #009548;
         --txt-primary-color : #00a550;
@@ -65,6 +68,16 @@ const GlobalStyles = createGlobalStyle`
                 user-select: none;  /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
     }
+    @keyframes pouring-effect {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 `
 export const Button = styled.button`
     outline: none;
@@ -73,4 +86,15 @@ export const Button = styled.button`
     background-color : transparent;
     color : #FFFFFF;
 `
+export const pouringEffect = keyframes`
+    from{
+        opacity: 0;
+        transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+`
+
 export default GlobalStyles;
