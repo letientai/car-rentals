@@ -28,6 +28,8 @@ const GlobalStyles = createGlobalStyle`
         --txt-title-color : #6e6e6e;
         --boder-color : #d8e0db;
         --hover-color : #00a550;
+        --nav-height : 60px;
+        --height-layout-search-top : 44px;
     }
     ul , li ,p{
         margin : 0;

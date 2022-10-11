@@ -1,0 +1,75 @@
+.search__layout{
+    background-color: #e7eaee;
+    .layout{
+        height: calc(100vh - var(--nav-height));
+        .layout__top{
+            padding: 0 20px;
+            background-color: #FFFFFF;
+            .layout__top-list{
+                display: flex;
+                justify-content: flex-start;
+                .layout__top-item{
+                    display: flex;
+                    align-items: center;
+                    > label {
+                        color: var(--txt-primary-color);
+                    }
+                    position: relative;
+                    width: 33%;
+                    display: flex;
+                    > input{
+                        flex: 1;
+                        margin-left: 10px;
+                    }
+                    &::after{
+                        position: absolute;
+                        content: "";
+                        top: 90%;
+                        width: 100%;
+                        left: 0;
+                        height: .5px;
+                        background-color: #ccc;
+                    }
+                    padding: 10px 0;
+                    margin-right: 40px;
+                }
+            }
+        }
+        .layout__container__search{
+            height: calc(100% - var(--height-layout-search-top));
+            .container__sidebar{
+                display: flex;
+                height: 100%;
+                .sidebar{
+                    width: 300px;
+                    padding-left: 20px;
+                    background-color: #FFFFFF;
+                    height: 100%;
+                    padding-top: 15px;
+                    .sort__slider{
+                        margin-top: 20px;
+                        .MuiSlider-rail,.MuiSlider-track{
+                            background-color: var(--background-btn-primary);
+                        }
+                        .css-eg0mwd-MuiSlider-thumb{
+                            background-color: #111;
+                            height: 16px;
+                            width: 16px;
+                        }
+
+                    }
+                    .sort__price--display{
+                        display: flex;
+                        align-items: center;
+                        max-width: 200px;
+                        justify-content: space-between;
+                        font-size: 10px;
+                    }
+                }
+                .search__wrap{
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

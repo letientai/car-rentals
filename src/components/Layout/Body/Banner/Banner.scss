@@ -35,7 +35,9 @@
                     .form__group{
                         display: flex;
                         flex-direction: column;
-                        margin-bottom: 20px;
+                        &:first-child{
+                            margin-bottom: 20px;
+                        }
                         > label{
                             color: var(--txt-primary-color);
                         }
@@ -46,6 +48,16 @@
                             padding-left: 20px;
                             &::placeholder{
                                 color: #ffffff;
+                            }
+                        }
+                        .MuiInputBase-root{
+                            color: #ffffff;
+                            svg{
+                                color: #ffffff;
+                            }
+                        }
+                        .form__group__date--time{
+                            input{
                             }
                         }
                     }

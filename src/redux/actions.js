@@ -1,4 +1,18 @@
-import { SET_DISPLAY_OVERLAY, SET_ITEM_CAR, SET_ITEM_PROP_OVERLAY, SET_LOADING_GET_CAR, SET_LOGIN_FAILED, SET_LOGIN_START, SET_LOGIN_SUCCESS, SET_REGISTER_FAILED, SET_REGISTER_START, SET_REGISTER_SUCCESS } from "./constants";
+import { 
+    SET_CARS_SORT,
+    SET_DISPLAY_OVERLAY, 
+    SET_ITEM_CAR, 
+    SET_ITEM_GENRE, 
+    SET_ITEM_PROP_OVERLAY, 
+    SET_LOADING_GET_CAR, 
+    SET_LOADING_GET_GENRE, 
+    SET_LOGIN_FAILED, 
+    SET_LOGIN_START, 
+    SET_LOGIN_SUCCESS, 
+    SET_REGISTER_FAILED, 
+    SET_REGISTER_START, 
+    SET_REGISTER_SUCCESS 
+} from "./constants";
 
 export const setDisplayOverlay = payload => ({
     type: SET_DISPLAY_OVERLAY,
@@ -40,4 +54,17 @@ export const setLoginFailed = payload => ({
     type: SET_LOGIN_FAILED,
     payload: payload
 });
+export const setLoadingGetGenre = payload => ({
+    type:SET_LOADING_GET_GENRE,
+    payload: payload
+});
+export const setItemGenre = payload => ({
+    type: SET_ITEM_GENRE,
+    payload: payload
+});
+export const setCarsSort = payload => ({
+    type: SET_CARS_SORT,
+    payload: payload
+});
+
 

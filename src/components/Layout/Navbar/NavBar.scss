@@ -1,6 +1,6 @@
 .navBar{
     background-color: #141414;
-    height: 60px;
+    height: var(--nav-height);
     position: relative;
     color: #f8f9fb;
     .navBar__img-lef{

@@ -42,6 +42,12 @@
             color: #111;
             padding: 0;
             margin: 2px 0;
+            overflow: hidden;
+            display: block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            height: 20px;
         }
         .item__card_fuel{
             background-color: #ccc;
