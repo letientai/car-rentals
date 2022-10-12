@@ -1,4 +1,6 @@
 import { LayoutAdmin } from "../components/admin/layout";
+import SearchLayout from "../components/CustomLayout/SearchLayout";
+import ItemRenderSearch from "../components/Search/ItemRenderSearch";
 import { AddProduct } from "../pages/admin/addProduct/addProduct";
 import { GenreManagement } from "../pages/admin/genreManagement/genreManagement";
 import { OrderManagement } from "../pages/admin/orderManagement/orderManagement";
@@ -46,6 +48,7 @@ const routes = () => {
       component: GenreManagement,
       Layout: LayoutAdmin,
     },
+    { path: "search", component: ItemRenderSearch, Layout: SearchLayout },
   ];
   const privateRoutes = [{ path: "/" }];
   return {

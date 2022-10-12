@@ -24,6 +24,11 @@ import {
   SET_USER_FAILED,
   SET_USER_START,
   SET_USER_SUCCESS,
+  SET_CARS_SORT,
+  SET_ITEM_GENRE, 
+  // SET_ITEM_PROP_OVERLAY, 
+  // SET_LOADING_GET_CAR, 
+  SET_LOADING_GET_GENRE, 
 } from "./constants";
 
 export const setDisplayOverlay = (payload) => ({
@@ -116,6 +121,19 @@ export const setCloseDetailOrder = (payload) => ({
   type: SET_CLOSE_DETAIL_ORDER,
   payload: payload,
 });
+export const setLoadingGetGenre = payload => ({
+    type:SET_LOADING_GET_GENRE,
+    payload: payload
+});
+export const setItemGenre = payload => ({
+    type: SET_ITEM_GENRE,
+    payload: payload
+});
+export const setCarsSort = payload => ({
+    type: SET_CARS_SORT,
+    payload: payload
+});
+
 
 
 export const setGenreStart = (payload) => ({

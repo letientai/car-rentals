@@ -8,6 +8,9 @@ export const SET_REGISTER_FAILED = 'set_register_failed';
 export const SET_LOGIN_START = 'set_login_start';
 export const SET_LOGIN_SUCCESS = 'set_login_success';
 export const SET_LOGIN_FAILED = 'set_login_failed';
+export const SET_ITEM_GENRE = 'set_item_genre';
+export const SET_LOADING_GET_GENRE  = 'set_loading_get_genre';
+export const SET_CARS_SORT  = 'set_cars_sort';
 
 export const SET_DELETE_CAR_START = 'set_delete_car_start';
 export const SET_DELETE_CAR_SUCCESS = 'set_delete_car_success';

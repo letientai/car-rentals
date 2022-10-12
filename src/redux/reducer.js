@@ -23,6 +23,11 @@ import {
   SET_USER_FAILED,
   SET_USER_START,
   SET_USER_SUCCESS,
+  SET_CARS_SORT,
+  SET_ITEM_GENRE,
+  // SET_ITEM_PROP_OVERLAY,
+  // SET_LOADING_GET_CAR,
+  SET_LOADING_GET_GENRE,
 } from "./constants";
 
 const initialState = {
@@ -45,6 +50,15 @@ const initialState = {
       error: null,
       success: false,
       values: null,
+    },
+    values: [],
+  },
+
+  carsSort: [],
+  genre: {
+    getGenres: {
+      isLoading: false,
+      values: [],
     },
   },
   register: {
@@ -347,6 +361,33 @@ const rootReducer = (state = initialState, action) => {
             ...state.getGenre,
             isLoading: false,
             error: true,
+          },
+        },
+      };
+    case SET_CARS_SORT:
+      return {
+        ...state,
+        carsSort: action.payload,
+      };
+    case SET_LOADING_GET_GENRE:
+      return {
+        ...state,
+        genre: {
+          ...state.genre,
+          getGenres: {
+            ...state.genre.getGenres,
+            isLoading: action.payload,
+          },
+        },
+      };
+    case SET_ITEM_GENRE:
+      return {
+        ...state,
+        genre: {
+          ...state.genre,
+          getGenres: {
+            ...state.genre.getGenres,
+            values: action.payload,
           },
         },
       };
