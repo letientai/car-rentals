@@ -15,9 +15,9 @@ export const ProductManagement = () => {
         <div className="header__title">
           <p>Sản phẩm</p>
         </div>
-        <div className="header__search">
-          <input type="text" placeholder="Nhập mã xe hoặc tên xe..." />
-        </div>
+        {/* <div className="header__search">
+          <input type="text" placeholder="Nhập mã xe..." />
+        </div> */}
         <div className="header__btnAdd">
           <div className="btnAdd" onClick={addProduct}>
             Thêm sản phẩm

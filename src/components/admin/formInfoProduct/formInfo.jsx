@@ -30,9 +30,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
   const [chooseGenre, setChooseGenre] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
-  const [checkLD, setCheckLD] = useState(0);
   const [defaultGenre, setDefaultGenre] = useState([]);
-  // const defaultGenre = [];
 
   useEffect(() => {
     setLoading(true);
@@ -44,7 +42,6 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
       .get(`http://api-rental-carl.herokuapp.com/genre`)
       .then(function (response1) {
         setOptionGenre(response1.data);
-        // defaultGenre = optionGenre.filter((x) => x._id === chooseGenre )
         if (!checkAddProduct) {
           //fetchData
           axios
@@ -55,8 +52,8 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
               setDataProduct(response2.data);
               setDescription(response2.data?.description);
               setChooseGenre(response2.data?.genre?._id);
-              console.log(response1.data);
-              console.log(response2.data?.genre?._id);
+
+              setImage(response2.data.images);
               setDefaultGenre(
                 response1.data.filter(
                   (x) => x._id === response2.data?.genre?._id
@@ -65,7 +62,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
               setLoading(false);
             })
             .catch(function (error) {
-              setCheckLD(checkLD + 1);
+              console.log(error);
             });
         } else {
           setLoading(false);
@@ -73,28 +70,10 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
       })
       .catch(function (error) {
         setLoading(false);
+        console.log(error);
       });
   };
-  // const fetchData = () => {
-  //   axios
-  //     .get(`http://api-rental-carl.herokuapp.com/car/${id}`)
-  //     .then(function (response) {
-  //       // handle success
-  //       console.log(response);
-  //       setDataProduct(response.data);
-  //       setDescription(response.data?.description);
-  //       setChooseGenre(response.data?.genre?._id);
-  //       console.log(optionGenre);
-  //       console.log(response.data?.genre?._id);
-  //       setDefaultGenre(
-  //         optionGenre.filter((x) => x._id === response.data?.genre?._id)
-  //       );
-  //       setLoading(false);
-  //     })
-  //     .catch(function (error) {
-  //       setCheckLD(checkLD + 1);
-  //     });
-  // };
+
   const onChangDescription = (e) => {
     setDescription(e.target.value);
     initialValues.description = e.target.value;
@@ -130,12 +109,15 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
     values.genre = chooseGenre;
     values.available = Availables;
     values.description = description;
-    // initialValues.gender = optionGender;
-    // initialValues.available = optionAvailable;
-    // initialValues.description = description;
-    // console.log("submit", values);
+    if (checkAddProduct) {
+      values.image = image;
+    } else {
+      values.image = image[0].data_url;
+    }
+    console.log("submit", values);
     if (
       values.fuel &&
+      // values.image &&
       values.genre &&
       values.description &&
       values.insuranceFees &&
@@ -227,7 +209,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
                       <FastField
                         name="unitPrice"
                         className="input"
-                        type="text"
+                        type="number"
                       />
                       <div className="formError">(*)</div>
 
@@ -278,7 +260,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
                       <FastField
                         name="insuranceFees"
                         className="input"
-                        type="text"
+                        type="number"
                       />
                       {/* {errors.insuranceFees && touched.insuranceFees ? (
                         <div className="formError">{errors.insuranceFees}</div>
@@ -332,7 +314,11 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
               </Form>
             )}
           </Formik>
-          <ImageUpload listImg={listImg} />
+          <ImageUpload
+            listImg={listImg}
+            image={image}
+            checkAddProduct={checkAddProduct}
+          />
         </div>
       )}
     </div>

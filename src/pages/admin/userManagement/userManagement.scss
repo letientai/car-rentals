@@ -1,0 +1,137 @@
+.userManagement-container {
+  width: 100%;
+  position: relative;
+  .header {
+    background-color: white;
+    width: 100%;
+    padding: 10px 20px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    &__title {
+      width: 150px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(109, 109, 109);
+    }
+    &__search {
+      min-width: 300px;
+      width: 40%;
+      max-width: 600px;
+      padding: 5px 0;
+      border: 1px solid rgb(211, 211, 211);
+      border-radius: 10px;
+      input {
+        width: 96%;
+        height: 100%;
+        margin: 0 2%;
+      }
+    }
+    &__btnAdd {
+      width: 30%;
+      max-width: 500px;
+      display: flex;
+      justify-content: flex-end;
+
+      .btnAdd {
+        // background-color: rgb(48, 168, 24);
+        border: 2px solid rgb(48, 168, 24);
+        color: rgb(85, 85, 85);
+        font-size: 16px;
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+          border: 2px solid rgb(26, 136, 4);
+          color: rgb(66, 66, 66);
+        }
+      }
+    }
+    .form {
+      width: 100vw;
+      // height: calc(100vh + 100px);
+      height: 100vh;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      position: fixed;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .formRegister {
+        position: absolute;
+        height: 730px;
+        z-index: 12;
+        // top: calc(((100vh - 630px) / 2) );
+        top: 20px;
+        right: calc((100vw - 600px) / 2);
+        // padding-bottom: 50px;
+        animation: upToDown 500ms ease-in-out;
+      }
+      .membrane {
+        position: fixed;
+        z-index: 11;
+        width: 100vw;
+        height: 140%;
+        background-color: rgba(44, 44, 44, 0.2);
+        cursor: pointer;
+      }
+    }
+  }
+  .content {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    .tableUser {
+      .productRow {
+        cursor: pointer;
+        border-bottom: 1px solid rgb(211, 211, 211);
+        &:hover {
+          background-color: #f0f0f0;
+        }
+        .MuiTableCell-root {
+          border-bottom: none;
+        }
+        .fieldPassword {
+          line-height: 16px;
+          display: block;
+          -webkit-line-clamp: 1; /* số dòng hiển thị */
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 200px;
+          white-space: nowrap;
+        }
+      }
+      // border: 1px solid black;
+      padding: 2px;
+      overflow-y: scroll;
+      height: 470px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .action {
+      display: flex !important;
+      justify-content: space-evenly;
+      .icon-action {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes upToDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+}

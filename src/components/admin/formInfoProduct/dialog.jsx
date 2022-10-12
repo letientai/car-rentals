@@ -27,19 +27,18 @@ export default function AlertDialog({
     setOpen(false);
   }, []);
   const handleAddProduct = () => {
-    console.log(dataProduct);
+    console.log(dataProduct?.image);
     axios
       .post("http://api-rental-carl.herokuapp.com/car/create", {
         genre: dataProduct.genre,
         name: dataProduct.productName,
         unitPrice: parseInt(dataProduct.unitPrice),
         insuranceFees: parseInt(dataProduct.insuranceFees),
-        image: "",
+        images: dataProduct?.image || "",
         available: true,
         description: dataProduct.description,
         seats: dataProduct.seats,
         fuel: dataProduct.fuel,
-        // slug: dataProduct.productName,
       })
       .then(function (response) {
         console.log(response);
@@ -51,6 +50,7 @@ export default function AlertDialog({
       .catch(function (error) {
         console.log(error);
         setOpenAlert(true);
+        setOpen(false);
         setMessage("Thêm sản phẩm thất bại!");
         setSeverity("warning");
       });
@@ -61,14 +61,14 @@ export default function AlertDialog({
   };
 
   const handleUpdateProduct = () => {
-    console.log(id);
+    console.log(dataProduct);
     axios
       .patch(`http://api-rental-carl.herokuapp.com/car/${id}/edit`, {
         genre: dataProduct.genre,
         name: dataProduct.productName,
         unitPrice: parseInt(dataProduct.unitPrice),
         insuranceFees: parseInt(dataProduct.insuranceFees),
-        image: "",
+        // images: dataProduct?.image || "",
         available: true,
         description: dataProduct.description,
         seats: dataProduct.seats,
