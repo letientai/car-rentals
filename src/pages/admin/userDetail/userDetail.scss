@@ -1,0 +1,73 @@
+.userDetail-container {
+  width: 100%;
+  position: relative;
+  .header {
+    padding: 20px 0;
+    justify-content: space-between;
+    .field {
+      width: 200px;
+      position: relative;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    p {
+      font-size: 18px;
+      font-weight: bold;
+      color: rgb(124, 124, 124);
+    }
+  }
+  .content {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    color: rgb(117, 117, 117);
+    .formUser-container {
+      .infomation_user {
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgb(180, 180, 180);
+
+        .header {
+          h5 {
+            margin: 0;
+            font-weight: bold;
+          }
+        }
+        &__content {
+          margin-top: 20px;
+          border: 1px solid rgb(219, 219, 219);
+          .row1 {
+            font-size: 17px;
+            // margin-top: 10px;
+            font-weight: bold;
+            color: rgb(85, 85, 85);
+            border-bottom: 1px solid rgb(219, 219, 219);
+            display: flex;
+            width: 100%;
+            .title {
+              width: 30%;
+              border-right: 1px solid rgb(219, 219, 219);
+              padding: 10px;
+            }
+            .content{
+              width: 70%;
+              padding: 10px;
+              color: rgb(117, 117, 117);
+              font-weight: 500;
+            }
+            
+          }
+        }
+      }
+      .infomation_rented{
+        padding-bottom: 40px;
+        .header {
+          h5 {
+            margin: 0;
+            font-weight: bold;
+
+          }
+        }
+      }
+    }
+  }
+}

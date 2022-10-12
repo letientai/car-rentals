@@ -12,5 +12,25 @@ export const SET_ITEM_GENRE = 'set_item_genre';
 export const SET_LOADING_GET_GENRE  = 'set_loading_get_genre';
 export const SET_CARS_SORT  = 'set_cars_sort';
 
+export const SET_DELETE_CAR_START = 'set_delete_car_start';
+export const SET_DELETE_CAR_SUCCESS = 'set_delete_car_success';
+export const SET_DELETE_CAR_FAILED = 'set_delete_car_failed';
+
+export const SET_USER_START = 'set_user_start';
+export const SET_USER_SUCCESS = 'set_user_success';
+export const SET_USER_FAILED = 'set_user_failed';
+
+export const SET_ITEM_USER_START = 'set_item_user_start';
+export const SET_ITEM_USER_SUCCESS = 'set_item_user_success';
+export const SET_ITEM_USER_FAILED = 'set_item_user_failed';
+
+export const SET_OPEN_DETAIL_ORDER = 'set_open_detail_order';
+export const SET_CLOSE_DETAIL_ORDER = 'set_close_detail_order';
+
+export const SET_GENRE_START = 'set_genre_start';
+export const SET_GENRE_SUCCESS = 'set_genre_success';
+export const SET_GENRE_FAILED = 'set_genre_failed';
+
+
 
 

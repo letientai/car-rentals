@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,8 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { useDispatch, useSelector } from "react-redux";
+import { setOpenDetailOrder } from "../../../redux";
 export const TableOrder = () => {
-  
+  const dispatch = useDispatch();
+
   const data = [
     {
       name: "áhháhd",
@@ -167,6 +170,11 @@ export const TableOrder = () => {
     },
   ];
 
+  const openDetailOrder = ( item) => {
+    dispatch(setOpenDetailOrder(item))
+  };
+  useEffect(() => {
+  });
   return (
     <div className="tableOrder">
       <TableContainer component={Paper}>
@@ -184,7 +192,11 @@ export const TableOrder = () => {
           </TableHead>
           <TableBody>
             {data?.map((item, index) => (
-              <TableRow key={index} className="productRow">
+              <TableRow
+                key={index}
+                className="productRow"
+                onClick={(e) => openDetailOrder(item)}
+              >
                 <TableCell component="th" scope="row">
                   {index}
                 </TableCell>

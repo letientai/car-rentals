@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import "./formDetailOrder.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { sendIdDetailSelector, setCloseDetailOrder } from "../../../redux";
+
 export const FormDetailOrder = (prop) => {
   const [orderStatus, setOrderStatus] = useState(0);
+  const dispatch = useDispatch();
+  const { openForm } = useSelector(sendIdDetailSelector);
+  const data = openForm.values;
 
-  const data = prop.ItemDetail;
   const handleSelectChange = (e) => {
     const order = parseInt(e.target.value);
     setOrderStatus(order);
   };
-
-  //   const closeFormDetail = () =>{
-  //     prop.closeForm(false)
-  //   }
+  const closeForm = () => {
+    dispatch(setCloseDetailOrder());
+  };
   return (
     <div className="formDetail-container">
       <div className="formDetai">
@@ -26,7 +30,7 @@ export const FormDetailOrder = (prop) => {
           </div>
           <div className="row">Email: {data?.email}</div>
           <div className="row">
-            <h4>Thông tin sản phẩm</h4>
+            <h4>Thông tin đơn thuê</h4>
             {/* {data?.listProduct.map((item, index) => (
               <div className="card-item" key={index}>
                 <div className="card-item-id">
@@ -59,7 +63,9 @@ export const FormDetailOrder = (prop) => {
           <div className="row-btn">
             <div className="groupBtn">
               <button className="btn btn-update">Cập nhật</button>
-              <button className="btn btn-cancel">Hủy</button>
+              <button className="btn btn-cancel" onClick={closeForm}>
+                Hủy
+              </button>
             </div>
           </div>
         </div>

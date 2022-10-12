@@ -64,6 +64,9 @@ export const Sidebar = () => {
       case "Quản lý tài khoản":
         navigate("/user-management");
         break;
+      case "Danh mục":
+        navigate("/genre-management");
+        break;
       default:
       // code block
     }
