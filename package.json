@@ -17,6 +17,8 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "dayjs": "^1.11.5",
+    "cloudinary": "^1.32.0",
+    "cloudinary-core": "^2.13.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
