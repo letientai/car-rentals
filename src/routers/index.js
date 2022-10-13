@@ -3,10 +3,12 @@ import { LayoutAdmin } from "../components/admin/layout";
 import SearchLayout from "../components/CustomLayout/SearchLayout";
 import ItemRenderSearch from "../components/Search/ItemRenderSearch";
 import { AddProduct } from "../pages/admin/addProduct/addProduct";
+import { GenreManagement } from "../pages/admin/genreManagement/genreManagement";
 import { OrderManagement } from "../pages/admin/orderManagement/orderManagement";
 import { Overview } from "../pages/admin/overview/overview";
 import { ProductDetail } from "../pages/admin/productDetail/productDetail";
 import { ProductManagement } from "../pages/admin/productmanagement/productManagement";
+import { UserDetail } from "../pages/admin/userDetail/userDetail";
 import { UserManagement } from "../pages/admin/userManagement/userManagement";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
@@ -35,6 +37,16 @@ const routes = () => {
     {
       path: "add-product",
       component: AddProduct,
+      Layout: LayoutAdmin,
+    },
+    {
+      path: "user-management/:id",
+      component: UserDetail,
+      Layout: LayoutAdmin,
+    },
+    {
+      path: "genre-management",
+      component: GenreManagement,
       Layout: LayoutAdmin,
     },
     { path: "search", component: ItemRenderSearch, Layout: SearchLayout },

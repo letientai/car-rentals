@@ -4,14 +4,14 @@
   padding: 5px 0;
   font-weight: bold;
 }
-.alert-request{
+.alert-request {
   position: fixed;
   z-index: 10;
   bottom: 20px;
   right: 20px;
   font-weight: bold !important;
   color: rgb(51, 51, 51) !important;
-  animation: UpToDown ease-in-out 1000ms  ;
+  animation: UpToDown ease-in-out 1000ms;
 }
 @keyframes UpToDown {
   from {
@@ -23,7 +23,6 @@
     opacity: 1;
   }
 }
-
 
 .form_fields {
   width: 97%;
@@ -57,7 +56,13 @@
           top: 5px;
           right: 0;
         }
-        .formControl{
+        .fieldError {
+          position: absolute;
+          top: 7px;
+          right: 7%;
+          color: red;
+        }
+        .formControl {
           width: 97.5%;
           color: rgb(119, 119, 119);
         }
