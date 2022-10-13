@@ -1,0 +1,153 @@
+.account{
+    background-color: #e7eaee;
+    .account__banner{
+        padding-top: 30%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(https://www.mioto.vn/static/media/car-9.4970ef2e.jpg);
+    }
+    .account__user{
+        height: 400px;
+        .account__user--item{
+            display: flex;
+            .account__img{
+                display: flex;
+                background-image:  linear-gradient(45deg, #3aa8f0,#daefff);
+                display: inline-flex;
+                margin: 0 50px;
+                width: 17%;
+                height: 176px;
+                border-radius: 50%;
+                transform: translateY(-40%);
+                font-size: 30px;
+                box-shadow: 0 3px 4px rgb(0 0 0 / 30%);
+                > span{
+                    margin: auto;
+                    color: #FFFFFF;
+                    font-weight: 500;
+                    font-size: 80px;
+                }
+            }
+            .account__user__name{
+                margin-top: 20px;
+                > h1{
+                    position: relative;
+                    font-size: 30px;
+                    font-weight: 600;
+                    .user__name__btn{
+                        position: relative;
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                        &::before{
+                            content : "";
+                            position: absolute;
+                            width: 30px;
+                            height: 30px;
+                            top: 0;
+                            left: 80%;
+                            background-color: transparent;
+                            z-index: 1;
+                        }
+                        &:hover ~ .user__name--update{
+                            display: block;
+                        }
+                        > svg{
+                            position: relative;
+                            margin-left: 10px;
+                            cursor: pointer;
+                            &:hover {
+                                box-shadow: 0 2px 0 .25px rgba(0, 0, 0, 0.15);
+                            }
+                        }
+                    }
+                    .user__name--update{
+                        display: none;
+                        position: absolute;
+                        top: -30px;
+                        right: 3%;
+                        background-color: #FFFFFF;
+                        border-radius: 5px;
+                        border-bottom-left-radius: 0px;
+                        box-shadow: 0 0px 0 0px rgba(0, 0, 0, 0.15);
+                        &:hover{
+                            display: block;
+                        }
+                        > li{
+                            font-size: 14px;
+                            cursor: pointer;
+                            padding: 6px 16px;
+                            &:first-child{
+                                border-top-left-radius: 5px;
+                                border-top-right-radius: 5px;
+                                border-bottom-right-radius: 5px;
+                            }
+                            &:hover{
+                                background-color: rgba(223, 221, 221, 0.5);
+                            }
+                        }
+                        .arrow--name{
+                            right: 100%;
+                            top: calc(100% - 17px);
+                            border-top: 10px solid transparent;
+                            border-bottom: -10px solid transparent;
+                            border-right: 15px solid #fff;
+                        }
+                    }
+                }
+                .user__name__day--create{
+                    position: relative;
+                    .user__name__crossbar{
+                        height: 1px;
+                        right: 115px;
+                        width: 40px;
+                    }
+                    .name__crossbar{
+                        &::before{
+                            position: absolute;
+                            content: "";
+                            width: 12%;
+                            height: 1.5px;
+                            right: 40%;
+                            top: 50%;
+                            background-color: #111;
+                        }
+                    }
+                    .user__name__trip{
+                        top: 50%;
+                        margin-left: 60px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        .account__user_info{
+            background-color: #FFFFFF;
+            position: relative;
+            .account__user__info--item{
+                margin-top: 26px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding-bottom: 100px;
+                .info__title{
+                    margin-right: 20px;
+                }
+                > svg{
+                    font-size: 20px;
+                    transform: translateY(-4px);
+                    &:hover {
+                        cursor: pointer;
+                        box-shadow: 0 2px 0 .25px rgba(0, 0, 0, 0.15);
+                    }
+                }
+                .info__link{
+                    color: var(--txt-primary-color);
+                }
+            }
+        }
+        
+    }
+}

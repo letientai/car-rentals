@@ -21,6 +21,9 @@ const Auth = () => {
     authRequest.logoutUser(currentUser.accessToken , dispatch);
     dispatch(setLoginFailed());
   }
+  const handleManageAcc = ()=>{
+    navigate('/account');
+  }
   return (
     <div className='auth' >
       {
@@ -42,10 +45,8 @@ const Auth = () => {
             e.stopPropagation();
           }}
           ref={elementAuthCustom} className='auth__user--custom' >
-            <li>Quản lý tài khoản</li>
-            <li
-            onClick={handleLogout}
-            >Đăng xuất</li>
+            <li onClick={handleManageAcc} >Quản lý tài khoản</li>
+            <li onClick={handleLogout}>Đăng xuất</li>
           </ul>
         </div>
         :

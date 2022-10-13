@@ -9,7 +9,7 @@ const carRequest = {
         try {
             const res = await axios.get('https://api-rental-carl.herokuapp.com/car');
             dispatch(setItemCar(res.data));
-            dispatch(setCarsSort(res.data));
+            // dispatch(setCarsSort(res.data));
             dispatch(setLoadingGetCar(false));
         } catch (error) {
             console.log(error);
