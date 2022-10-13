@@ -3,8 +3,8 @@ import React from "react";
 import Navbar from "../Layout/Navbar/Navbar";
 import "./LayoutCustom.scss";
 import SelectGlobal from "../Global/Select/Select";
-import { useSelector } from "react-redux";
-import { genreSelector } from "../../redux";
+import {useSelector } from "react-redux";
+import { genreSelector} from "../../redux";
 import SliderSort from "../Global/SliderSort/SliderSort";
 import { useEffect } from "react";
 import DateTime from "../Global/DateTimePicker/Datime";
@@ -15,7 +15,6 @@ import DateTime from "../Global/DateTimePicker/Datime";
 
 const SearchLayout = ({ children , cars}) => {
   const { getGenres } = useSelector(genreSelector);
-  
   const sortGenres = [];
   const sortFuel = [];
   const sortCarsSeat = [];

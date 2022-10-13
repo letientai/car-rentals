@@ -100,6 +100,7 @@ const RegisterConponent = () => {
                 name='password' 
                 type="password" 
                 placeholder='Password'
+                autoComplete="on"
                 {...formik.getFieldProps('password')}
                 />
             </div>
@@ -112,6 +113,7 @@ const RegisterConponent = () => {
                 name='passwordConfirm' 
                 type="password" 
                 placeholder='Password confirm'
+                autoComplete="on"
                 {...formik.getFieldProps('passwordConfirm')}
                 />
             </div>

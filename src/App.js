@@ -11,12 +11,12 @@ const App = () => {
   const dispatch = useDispatch();
   const overlay = useSelector(overlaySelector);
   const {getCars} = useSelector(carSelector);
-  useEffect(()=>{
-    // useMemo(()=>{
+  // useEffect(()=>{
+    useMemo(()=>{
       carRequest.getCarsApi(dispatch);
       genreRequest.getGenresApi(dispatch);
-    // },[]);
-  },[]);
+    },[]);
+  // },[]);
   return (
     <div >
       <Routes>

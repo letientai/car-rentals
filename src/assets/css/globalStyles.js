@@ -70,6 +70,15 @@ const GlobalStyles = createGlobalStyle`
                 user-select: none;  /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
     }
+    .arrow-up {
+        position: absolute;
+        top: -6px;
+        width: 0; 
+        height: 0; 
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 7px solid #fff;
+    }
     @keyframes pouring-effect {
         from {
             transform: scale(0);

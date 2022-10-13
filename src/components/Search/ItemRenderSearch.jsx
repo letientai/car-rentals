@@ -1,14 +1,18 @@
 import { Grid } from '@mui/material';
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { carSelector, carsSortSelector } from '../../redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { carSelector, carsSortSelector, setCarsSort } from '../../redux';
 import CarCard from '../Global/CarCard';
 import "./ItemRenderSearch.scss"
 
 
 const ItemRenderSearch = () => {
+    const dispatch = useDispatch();
     const {getCars} = useSelector(carSelector);
     const carsSort = useSelector(carsSortSelector);
+    useEffect(() =>{
+        dispatch(setCarsSort(getCars.values));
+    },[getCars.values])
     const responsive = {
         sm : 12,
         md : 6,

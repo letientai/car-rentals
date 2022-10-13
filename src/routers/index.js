@@ -1,3 +1,4 @@
+import Account from "../components/account/Account";
 import { LayoutAdmin } from "../components/admin/layout";
 import SearchLayout from "../components/CustomLayout/SearchLayout";
 import ItemRenderSearch from "../components/Search/ItemRenderSearch";
@@ -49,6 +50,7 @@ const routes = () => {
       Layout: LayoutAdmin,
     },
     { path: "search", component: ItemRenderSearch, Layout: SearchLayout },
+    { path: "account", component: Account },
   ];
   const privateRoutes = [{ path: "/" }];
   return {
