@@ -74,6 +74,7 @@ const Login = () => {
                 <input 
                 name='password' 
                 type="password" 
+                autoComplete="on"
                 placeholder='Password'
                 {...formik.getFieldProps('password')}
                 />
