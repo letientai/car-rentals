@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,14 +6,20 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import dateFormat from 'dateformat';
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useDispatch, useSelector } from "react-redux";
 import { carSelector, setOpenDetailOrder } from "../../../redux";
 import carRequest from "../../../api/carRequest";
 import { useNavigate } from "react-router-dom";
+import AlertDialogDelete from "./dialog";
 
 export const TableGenre = () => {
   const { getGenre } = useSelector(carSelector);
+  const [checkDialog, setCheckDialog] = useState(false);
+  const [idDelete, setIdDelete] = useState("");
+  const title = "rmGenre"
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,11 +29,28 @@ export const TableGenre = () => {
     carRequest.getGenre(dispatch);
     console.log();
   };
-  useEffect(() => {
-console.log(getGenre);
-  },[getGenre])
+//   useEffect(() => {
+// console.log(getGenre);
+//   },[getGenre])
+
+  const deteleGenre = (e, item) =>{
+    e.stopPropagation();
+    setCheckDialog(true);
+    setIdDelete(item);
+  }
+
+  const closeDelete = (check) => {
+    setCheckDialog(false);
+  };
+
   return (
-    <div>
+    <div className="tableGenre">
+       <AlertDialogDelete
+        checkDialog={checkDialog}
+        idDelete={idDelete}
+        closeDelete={closeDelete}
+        title={title}
+      />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
           <caption>SẢN PHẨM</caption>
@@ -37,6 +60,7 @@ console.log(getGenre);
               <TableCell align="left">Tên hãng</TableCell>
               <TableCell align="center">Số lượng xe</TableCell>
               <TableCell align="left">Ngày tạo</TableCell>
+              <TableCell align="center">Hành động</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -51,21 +75,15 @@ console.log(getGenre);
                 </TableCell>
                 <TableCell align="left">{item?.label}</TableCell>
                 <TableCell align="center">{item?.cars.length}</TableCell>
-                <TableCell align="left">{item?.createdAt}</TableCell>
-                {/* <TableCell align="left" className="action">
+                <TableCell align="left">{dateFormat(item?.createdAt, "mmmm dS, yyyy")}</TableCell>
+                <TableCell align="center" className="action">
                   <div
                     className="icon-action"
-                    // onClick={(e) => deteleProduct(e, item._id)}
+                    onClick={(e) => deteleGenre(e, item)}
                   >
                     <HighlightOffIcon />
                   </div>
-                  <div
-                    className="icon-action"
-                    // onClick={(e) => showInfOrder(item)}
-                  >
-                    <RemoveRedEyeIcon />
-                  </div>
-                </TableCell> */}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
