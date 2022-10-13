@@ -22,7 +22,34 @@
     width: 100%;
     background-color: rgb(255, 255, 255);
     padding: 10px 20px;
-    .tableUser {
+    position: relative;
+    .addGenre {
+      width: 100%;
+      margin: 20px auto;
+      display: flex;
+      &__input {
+        border: 1px solid rgb(211, 211, 211);
+        padding: 5px;
+        text-transform: uppercase;
+        min-width: 300px;
+        width: 40%;
+        color: #6b6b6b;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      &__btn {
+        width: 40px;
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        justify-content: center;
+        font-size: 25px;
+        color: green;
+        cursor: pointer;
+        // border-radius: 100%;
+        border: 1px solid green;
+      }
+    }
+    .tableGenre {
       .productRow {
         cursor: pointer;
         border-bottom: 1px solid rgb(211, 211, 211);
@@ -52,5 +79,30 @@
         display: none;
       }
     }
+    .alertAddGenre {
+      // width: 400px !important;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      animation: upToDown 1000ms ease-in-out;
+    }
+  }
+}
+.alertAddGenre {
+  // width: 400px !important;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  animation: upToDown 1000ms ease-in-out;
+}
+
+@keyframes upToDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
