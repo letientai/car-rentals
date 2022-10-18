@@ -75,7 +75,7 @@ export const TableGenre = () => {
                 </TableCell>
                 <TableCell align="left">{item?.label}</TableCell>
                 <TableCell align="center">{item?.cars.length}</TableCell>
-                <TableCell align="left">{dateFormat(item?.createdAt, "mmmm dS, yyyy")}</TableCell>
+                <TableCell align="left">{dateFormat(item?.createdAt, "dd/mm/yyyy - h:MM TT")}</TableCell>
                 <TableCell align="center" className="action">
                   <div
                     className="icon-action"
