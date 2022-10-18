@@ -1,7 +1,15 @@
 import React from "react";
 import EditLocationIcon from "@mui/icons-material/EditLocation";
 import { Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+import {setDisplayOverlay, setItemPropOverlay} from '../../redux';
+import Detail from '../Detail/Detail'
 const CarCard = ({ itemCar, responsive }) => {
+  const dispatch = useDispatch();
+  const handleShowDetailsCar = (id) =>{
+    dispatch(setDisplayOverlay(true))
+    dispatch(setItemPropOverlay(<Detail id={id}/>))
+  }
   return (
     <Grid
       item
@@ -10,7 +18,11 @@ const CarCard = ({ itemCar, responsive }) => {
       xs={responsive?.xs}
       className="item__card"
     >
-      <div className="wrap__carCard">
+      <div 
+      onClick={()=>{
+        handleShowDetailsCar(itemCar._id)
+      }}
+      className="wrap__carCard">
         <div className="wrap__img">
           {itemCar.images.map((img, index) => (
             <div
