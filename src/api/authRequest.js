@@ -78,6 +78,7 @@ const authRequest = {
           }
         )
         .then((response) => {
+          dispatch(setLoadingGlobal(false));
           dispatch(setToastMessage({
             display : true,
             title : 'success',
@@ -85,7 +86,8 @@ const authRequest = {
           }));
           navigate('/');
         })
-        .catch((error) => console.log(error));
+        .catch((error) => 
+        dispatch(setLoadingGlobal(false)));
     } catch (error) {
       dispatch(setLoginFailed(error));
     }
