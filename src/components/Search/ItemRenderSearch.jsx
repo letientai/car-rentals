@@ -23,10 +23,10 @@ const ItemRenderSearch = () => {
         {getCars.isLoading?
             <div>Loading</div>:
             <Grid className='item__render--scroll' container >
-                {!carsSort[0]?
+                {(carsSort && !carsSort[0])?
                 <div>
                     có cái nịt
-                </div>:carsSort.map((item , index)=>{
+                </div>:carsSort?.map((item , index)=>{
                     return (
                         <CarCard responsive={responsive} key={index} itemCar={item} />
                     )
