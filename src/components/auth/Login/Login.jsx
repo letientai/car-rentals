@@ -24,11 +24,11 @@ const Login = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
-          .required("Trường này không được để trống")
+          .required("Bắt buộc")
           .matches(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, "Email không hợp lệ"),
       password : Yup.string()
-          .required('Trường này không được để trống')
-          .matches(/^[0-9a-zA-Z]{8,}$/,'Mật khẩu phải chứa ít nhất 8 ký tự'),
+          .required('Bắt buộc')
+          .min(8, "Tối thiểu 8 ký tự"),
     }),
     onSubmit: (userLogin)=>{
       authRequest.loginUser(userLogin , dispatch);

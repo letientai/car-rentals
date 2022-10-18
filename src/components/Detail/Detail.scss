@@ -1,0 +1,170 @@
+.detail{
+    color: #FFFFFF;
+    overflow-y: scroll;
+    height: 100vh;
+    .carName {
+        margin-top: 40px;
+        font-size: 36px;
+        font-weight: 600;
+        padding: 0px 16px;
+        margin-bottom: 15px;
+    }
+
+    .carImages {
+        height: 340px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        border-radius: 6px;
+    }
+    .unitPrices {
+        height: max-content;
+        width: max-content;
+    }
+    .car_content {
+        background-color: #FFFFFF;
+        margin-top: 18px;
+        // height: 340px;
+        padding: 25px;
+        color: #000;
+        border-radius: 6px;
+        line-height: 1.7;
+        .carCharactor {
+            display: flex;
+            .charac {
+                font-size: 12.5px;
+                color: #a9aaad;
+                font-weight: 700;
+                width: 25%;
+                text-transform: uppercase;
+            }
+            .sub_charac{
+                font-size: 14px;
+                width: 75%;
+                .list_charac {
+                    display: flex;
+                    flex-wrap: wrap;
+                    list-style: none;
+                    .car_seats, .car_driveTrains, .car_fuel {
+                        width: 50%;
+                        margin-bottom: 1rem;
+                        padding-left: 8px;
+                    }
+                }
+            }
+        }
+        .car_description {
+            display: flex;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            
+            .descrip {
+                font-size: 12.5px;
+                color: #a9aaad;
+                font-weight: 700;
+                width: 25%;
+                text-transform: uppercase;
+            }
+            .content_descripton {
+                width: 75%;
+                padding: 0 20px 0 8px;
+                text-align: justify;
+                font-size: 14px;
+            }
+        }
+        .car_feature {
+            display: flex;
+            margin-top: 1rem;
+            .feature {
+                font-size: 12.5px;
+                color: #a9aaad;
+                font-weight: 700;
+                width: 25%;
+                text-transform: uppercase;
+            }
+            .sub_feature{
+                font-size: 14px;
+                width: 75%;
+                .list_feature {
+                    display: flex;
+                    flex-wrap: wrap;
+                    list-style: none;
+                    .feature_items {
+                        width: 50%;
+                        margin-bottom: 1rem;
+                        padding-left: 8px;
+                    }
+                }
+            }
+        }
+
+    }
+    .car_regulations {
+        background-color: #FFFFFF;
+        margin-top: 18px;
+        padding: 25px;
+        color: #000;
+        border-radius: 6px;
+        line-height: 1.8;
+        .regulations_papers {
+            display: flex;
+            .regulations_identification {
+                font-size: 12.5px;
+                color: #a9aaad;
+                font-weight: 700;
+                width: 25%;
+                text-transform: uppercase;
+                padding-right: 6px;
+            }
+            .identification_content {
+                font-size: 14px;
+                width: 75%;
+                .list_papers {
+                    width: 75%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    .papers_items {
+                        width: 100%;
+                        font-size: 14px;
+                        margin-bottom: 1rem;
+                        padding-left: 8px;
+                    }
+                }
+            }
+        }
+        .car_mortgage {
+            display: flex;
+            margin: 1rem 0 2rem;
+            .mortgage_collateral {
+                font-size: 12.5px;
+                color: #a9aaad;
+                font-weight: 700;
+                width: 25%;
+                text-transform: uppercase;
+                padding-right: 6px;
+            }
+            .collateral_content {
+                font-size: 14px;
+                    width: 75%;
+                    // padding-right: 75px;
+                    word-wrap: break-word;
+            }
+        }
+        .car_proviso {
+            display: flex;
+            .proviso_rules {
+                font-size: 12.5px;
+                color: #a9aaad;
+                font-weight: 700;
+                width: 25%;
+                text-transform: uppercase;
+                padding-right: 6px;
+            }
+            .sub_rules {
+                font-size: 14px;
+                width: 75%;
+                word-wrap: break-word;
+            }
+        }
+    }
+}

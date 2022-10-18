@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TableUser } from "../../../components/admin/table/tableUser";
 import "./userManagement.scss";
 import RegisterConponent from "../../../components/auth/Register/Register";
+import { registerSelector } from "../../../redux";
+import { useSelector } from "react-redux";
 export const UserManagement = () => {
+  const { success, error } = useSelector(registerSelector);
+  useEffect(() => {
+    closeRegister();
+  }, [success, error]);
+
   const [checkRegister, setCheckRegister] = useState(false);
-  const closeRegister = () => {setCheckRegister(false)};
-  const register = () => {setCheckRegister(true)};
+  const closeRegister = () => {
+    setCheckRegister(false);
+  };
+  const register = () => {
+    setCheckRegister(true);
+  };
   return (
     <div className="userManagement-container">
       <div className="header">

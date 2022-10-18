@@ -13,17 +13,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import userRequest from "../../../api/userRequest";
 import { useDispatch, useSelector } from "react-redux";
-import {  userSelector } from "../../../redux";
+import {  registerSelector, userSelector } from "../../../redux";
 import { CircularProgress } from "@mui/material";
 
 export const TableUser = () => {
   const { getUsers } = useSelector(userSelector);
+  const { success } = useSelector(registerSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetchDataUser();
-  }, []);
+  }, [success]);
   const fetchDataUser = () => {
     userRequest.getUserApi(dispatch);
     console.log();

@@ -31,6 +31,10 @@ import {
   SET_LOADING_GET_GENRE,
   SET_TOAST_MESSAGE,
   SET_LOADING_GLOBAL, 
+  SET_ADD_GENRE,
+  SET_LOADING_ADD_GENRE,
+  SET_DELETE_GENRE,
+  SET_LOADING_DELETE_GENRE, 
 } from "./constants";
 
 export const setDisplayOverlay = (payload) => ({
@@ -161,5 +165,23 @@ export const setGenreSuccess = (payload) => ({
 });
 export const setGenreFailed = (payload) => ({
   type: SET_GENRE_FAILED,
+  payload: payload,
+});
+
+export const setAddGenre = (payload) => ({
+  type: SET_ADD_GENRE,
+  payload: payload,
+});
+export const setLoadingAddGenre = (payload) => ({
+  type: SET_LOADING_ADD_GENRE,
+  payload: payload,
+});
+
+export const setDeleteGenre = (payload) => ({
+  type: SET_DELETE_GENRE,
+  payload: payload,
+});
+export const setLoadingDeleteGenre = (payload) => ({
+  type: SET_LOADING_DELETE_GENRE,
   payload: payload,
 });

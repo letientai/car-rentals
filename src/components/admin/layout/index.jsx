@@ -11,7 +11,6 @@ export const LayoutAdmin = ({ children }) => {
   const [checkFormDetail, setCheckFormDetail] = useState(false);
   const { openForm } = useSelector(sendIdDetailSelector);
 
-  console.log("ahaiâ", openForm);
   const handleSidebar = (check) => {
     setCheckOpenSidebar(check);
   };
