@@ -50,7 +50,7 @@
                             background-color: transparent;
                             z-index: 1;
                         }
-                        &:hover ~ .user__name--update{
+                        &:hover > .user__name--update{
                             display: block;
                         }
                         > svg{
@@ -61,38 +61,38 @@
                                 box-shadow: 0 2px 0 .25px rgba(0, 0, 0, 0.15);
                             }
                         }
-                    }
-                    .user__name--update{
-                        display: none;
-                        position: absolute;
-                        top: -30px;
-                        right: 3%;
-                        background-color: #FFFFFF;
-                        border-radius: 5px;
-                        border-bottom-left-radius: 0px;
-                        box-shadow: 0 0px 0 0px rgba(0, 0, 0, 0.15);
-                        &:hover{
-                            display: block;
-                        }
-                        > li{
-                            font-size: 14px;
-                            cursor: pointer;
-                            padding: 6px 16px;
-                            &:first-child{
-                                border-top-left-radius: 5px;
-                                border-top-right-radius: 5px;
-                                border-bottom-right-radius: 5px;
-                            }
+                        .user__name--update{
+                            display: none;
+                            position: absolute;
+                            top: -100%;
+                            left: calc(100% + 40px);
+                            background-color: #FFFFFF;
+                            border-radius: 5px;
+                            border-bottom-left-radius: 0px;
+                            box-shadow: 0 0px 0 0px rgba(0, 0, 0, 0.15);
                             &:hover{
-                                background-color: rgba(223, 221, 221, 0.5);
+                                display: block;
                             }
-                        }
-                        .arrow--name{
-                            right: 100%;
-                            top: calc(100% - 17px);
-                            border-top: 10px solid transparent;
-                            border-bottom: -10px solid transparent;
-                            border-right: 15px solid #fff;
+                            > li{
+                                font-size: 14px;
+                                cursor: pointer;
+                                padding: 6px 16px;
+                                &:first-child{
+                                    border-top-left-radius: 5px;
+                                    border-top-right-radius: 5px;
+                                    border-bottom-right-radius: 5px;
+                                }
+                                &:hover{
+                                    background-color: rgba(223, 221, 221, 0.5);
+                                }
+                            }
+                            .arrow--name{
+                                right: 100%;
+                                top: calc(100% - 17px);
+                                border-top: 10px solid transparent;
+                                border-bottom: -10px solid transparent;
+                                border-right: 15px solid #fff;
+                            }
                         }
                     }
                 }

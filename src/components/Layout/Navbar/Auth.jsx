@@ -18,7 +18,7 @@ const Auth = () => {
   const elementAuthCustom = useRef();
   const handleLogout = ()=>{
     localStorage.removeItem('currentUser');
-    authRequest.logoutUser(currentUser.accessToken , dispatch);
+    authRequest.logoutUser(currentUser.accessToken , dispatch,navigate);
     dispatch(setLoginFailed());
   }
   const handleManageAcc = ()=>{

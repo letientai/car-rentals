@@ -28,6 +28,8 @@ import {
   // SET_ITEM_PROP_OVERLAY,
   // SET_LOADING_GET_CAR,
   SET_LOADING_GET_GENRE,
+  SET_TOAST_MESSAGE,
+  SET_LOADING_GLOBAL,
   SET_ADD_GENRE,
   SET_LOADING_ADD_GENRE,
   SET_DELETE_GENRE,
@@ -35,6 +37,12 @@ import {
 } from "./constants";
 
 const initialState = {
+  toastMessage: {
+    display : false,
+    title : "",
+    mess : "",
+  },
+  isLoadingGlobal : false,
   overlay: {
     displayOverlay: false,
     itemPropOverlay: <></>,
@@ -178,7 +186,7 @@ const rootReducer = (state = initialState, action) => {
     case SET_LOGIN_START:
       return {
         ...state,
-        register: {
+        login: {
           ...state.login,
           isLoading: true,
         },
@@ -404,6 +412,16 @@ const rootReducer = (state = initialState, action) => {
           },
         },
       };
+    case SET_TOAST_MESSAGE:
+      return {
+        ...state,
+        toastMessage : action.payload,
+      }
+    case SET_LOADING_GLOBAL:
+      return {
+        ...state,
+        isLoadingGlobal : action.payload,
+      }
 
     case SET_ADD_GENRE:
       return {
