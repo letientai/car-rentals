@@ -32,8 +32,6 @@ const Login = () => {
     }),
     onSubmit: (userLogin)=>{
       authRequest.loginUser(userLogin , dispatch);
-      dispatch(setDisplayOverlay(false));
-      dispatch(setItemPropOverlay(<></>));
     },
   });
   const handelBlurInput = (field)=>{

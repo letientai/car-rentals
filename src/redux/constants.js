@@ -1,16 +1,25 @@
 export const SET_DISPLAY_OVERLAY = 'set_display_overlay';
 export const SET_ITEM_PROP_OVERLAY = 'set_item_prop_overlay';
+
+export const SET_TOAST_MESSAGE = 'set_toast_message';
+
+export const SET_LOADING_GLOBAL = 'set_loading_global';
+
+
 export const SET_ITEM_CAR = 'set_item_car';
 export const SET_LOADING_GET_CAR = 'set_loading_get_car';
+export const SET_CARS_SORT  = 'set_cars_sort';
+
 export const SET_REGISTER_START = 'set_register_start';
 export const SET_REGISTER_SUCCESS = 'set_register_success';
 export const SET_REGISTER_FAILED = 'set_register_failed';
+
 export const SET_LOGIN_START = 'set_login_start';
 export const SET_LOGIN_SUCCESS = 'set_login_success';
 export const SET_LOGIN_FAILED = 'set_login_failed';
+
 export const SET_ITEM_GENRE = 'set_item_genre';
 export const SET_LOADING_GET_GENRE  = 'set_loading_get_genre';
-export const SET_CARS_SORT  = 'set_cars_sort';
 
 export const SET_DELETE_CAR_START = 'set_delete_car_start';
 export const SET_DELETE_CAR_SUCCESS = 'set_delete_car_success';

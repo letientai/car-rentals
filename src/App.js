@@ -4,6 +4,8 @@ import {Routes , Route} from 'react-router-dom';
 import carRequest from './api/carRequest';
 import genreRequest from './api/genreRequest';
 import DefaultLayout from './components/CustomLayout/DefaultLayout';
+import SimpleBackdrop from './components/Global/BackDrop/BackDrop';
+import BasicAlert from './components/Global/BasicAlert/BasicAlert';
 import Overlay from './components/Global/Overlay/Overlay';
 import {carSelector, overlaySelector } from './redux';
 import routes from './routers';
@@ -40,7 +42,9 @@ const App = () => {
           )
         })}
       </Routes>
+      <BasicAlert title="Success" mess="thanh cong roi nha" />
       {overlay.displayOverlay && <Overlay chilren={overlay.itemPropOverlay} />}
+      <SimpleBackdrop/>
     </div>
   )
 }

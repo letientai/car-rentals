@@ -28,7 +28,9 @@ import {
   SET_ITEM_GENRE, 
   // SET_ITEM_PROP_OVERLAY, 
   // SET_LOADING_GET_CAR, 
-  SET_LOADING_GET_GENRE, 
+  SET_LOADING_GET_GENRE,
+  SET_TOAST_MESSAGE,
+  SET_LOADING_GLOBAL, 
 } from "./constants";
 
 export const setDisplayOverlay = (payload) => ({
@@ -40,10 +42,23 @@ export const setItemPropOverlay = (payload) => ({
   payload: payload,
 });
 
+
+export const setToastMessage = (payload) => ({
+  type: SET_TOAST_MESSAGE,
+  payload: payload,
+});
+
 export const setItemCar = (payload) => ({
   type: SET_ITEM_CAR,
   payload: payload,
 });
+
+
+export const setLoadingGlobal = (payload) => ({
+  type: SET_LOADING_GLOBAL,
+  payload: payload,
+});
+
 export const setLoadingGetCar = (payload) => ({
   type: SET_LOADING_GET_CAR,
   payload: payload,

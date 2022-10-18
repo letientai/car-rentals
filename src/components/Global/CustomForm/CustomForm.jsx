@@ -3,17 +3,19 @@ import React from 'react'
 import * as Yup from 'yup';
 import LocalPostOfficeOutlinedIcon from '@mui/icons-material/LocalPostOfficeOutlined';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import './CustomForm.scss'
 import { Button } from 'react-bootstrap';
+import authRequest from '../../../api/authRequest';
+import { useDispatch } from 'react-redux';
 const CustomForm = ({title , keyUpdate}) => {
     const initialValues = {};
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const dispatch = useDispatch();
     if (keyUpdate) {
         initialValues[keyUpdate] = '';
         if (keyUpdate === 'password') {
-            initialValues.passwordNew = '';
+            initialValues.newPassword = '';
             initialValues.passwordConfirm = '';
         }
     }
@@ -39,12 +41,12 @@ const CustomForm = ({title , keyUpdate}) => {
             validationYup[keyUpdate] = Yup.string()
             .required('Trường này không được để trống')
             .matches(/^[0-9a-zA-Z]{8,}$/,'Mật khẩu phải chứa ít nhất 8 ký tự');
-            validationYup.passwordNew = Yup.string()
+            validationYup.newPassword = Yup.string()
             .required('Trường này không được để trống')
             .matches(/^[0-9a-zA-Z]{8,}$/,'Mật khẩu phải chứa ít nhất 8 ký tự');
             validationYup.passwordConfirm = Yup.string()
             .required("Trường này không được để trống")
-            .oneOf([Yup.ref("passwordNew"), null], "Mật khẩu không trùng khớp");
+            .oneOf([Yup.ref("newPassword"), null], "Mật khẩu không trùng khớp");
             break;
         default:
             break;
@@ -53,8 +55,8 @@ const CustomForm = ({title , keyUpdate}) => {
         initialValues,
         validationSchema: Yup.object(validationYup),
         onSubmit: (data)=>{
-        //   const {passwordConfirm , ...userFormat} = userCustomInfo;
-            console.log(data);
+          const {passwordConfirm , ...userFormat} = data;
+          authRequest.updateUser(currentUser.accessToken, dispatch,currentUser._id,userFormat);
         },
       });
 
@@ -135,14 +137,14 @@ const CustomForm = ({title , keyUpdate}) => {
                 <div className='group__field'>
                     <HttpsOutlinedIcon/>
                     <input 
-                    name='passwordNew' 
+                    name='newPassword' 
                     type="password" 
                     placeholder='New password'
                     autoComplete="on"
-                    {...formik.getFieldProps('passwordNew')}
+                    {...formik.getFieldProps('newPassword')}
                     />
                 </div>
-            {handelBlurInput("passwordNew")}
+            {handelBlurInput("newPassword")}
             </div>
             <div className='form__group' >
                 <div className='group__field'>
