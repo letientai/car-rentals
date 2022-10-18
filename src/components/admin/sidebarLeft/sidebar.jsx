@@ -6,6 +6,7 @@ import bell from "../../../assets/admin/img/icon-bell.svg";
 import product from "../../../assets/admin/img/product.svg";
 import voucher from "../../../assets/admin/img/home.svg";
 import order from "../../../assets/admin/img/order.png";
+import user from "../../../assets/admin/img/user.png";
 import { useNavigate } from "react-router-dom";
 export const Sidebar = () => {
   const navigate = useNavigate();
@@ -26,6 +27,10 @@ export const Sidebar = () => {
     {
       name: "Đơn thuê",
       img: order,
+    },
+    {
+      name: "Quản lý tài khoản",
+      img: user,
     },
     {
       name: "Banner",
@@ -55,6 +60,12 @@ export const Sidebar = () => {
         break;
       case "Sản phẩm":
         navigate("/product-management");
+        break;
+      case "Quản lý tài khoản":
+        navigate("/user-management");
+        break;
+      case "Danh mục":
+        navigate("/genre-management");
         break;
       default:
       // code block

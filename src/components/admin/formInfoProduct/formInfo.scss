@@ -4,6 +4,26 @@
   padding: 5px 0;
   font-weight: bold;
 }
+.alert-request {
+  position: fixed;
+  z-index: 10;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bold !important;
+  color: rgb(51, 51, 51) !important;
+  animation: UpToDown ease-in-out 1000ms;
+}
+@keyframes UpToDown {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .form_fields {
   width: 97%;
   margin: 5px 0;
@@ -21,83 +41,50 @@
         font-size: 15px;
       }
       &__content {
+        position: relative;
         .input {
-          width: 100%;
+          width: 95%;
           border: 1px solid rgb(221, 221, 221);
           padding: 6px 5px;
           border-radius: 4px;
           color: rgb(119, 119, 119);
         }
+        .formError {
+          color: red;
+          width: 20px;
+          position: absolute;
+          top: 5px;
+          right: 0;
+        }
+        .fieldError {
+          position: absolute;
+          top: 7px;
+          right: 7%;
+          color: red;
+        }
+        .formControl {
+          width: 97.5%;
+          color: rgb(119, 119, 119);
+        }
+      }
+      &__content_select {
+        width: 70%;
+        position: relative;
         .select {
-          width: 60%;
+          width: 92%;
           color: rgb(119, 119, 119) !important;
           .css-qc6sy-singleValue {
             color: rgb(119, 119, 119) !important;
           }
         }
-        .imageUpload {
-          width: 100%;
-          position: relative;
-          .drop__image {
-            border: dashed 3px rgb(180, 180, 180);
-            display: inline-block;
-            width: 100%;
-            height: 307px;
-            display: flex;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-            background-color: rgb(252, 252, 252);
-            .MuiSvgIcon-root {
-              margin-bottom: 0 !important;
-            }
-            .listImg {
-              position: absolute;
-              width: 100%;
-              flex-wrap: wrap;
-              display: flex;
-              z-index: 10;
-              .btn-delete {
-                position: absolute;
-                top: -5px;
-                right: -5px;
-                cursor: pointer;
-                color: red;
-              }
-            }
-            p {
-              color: rgb(180, 180, 180);
-              font-weight: bold;
-            }
-            .icon__upload {
-              font-size: 120px;
-              width: 100%;
-              margin: auto;
-              color: rgb(180, 180, 180);
-            }
-          }
-          .btn {
-            border: 1px solid rgb(0, 206, 0);
-            margin-right: 10px;
-            color: rgb(0, 206, 0);
-            font-weight: 600;
-            &:hover {
-              border: 1px solid rgb(1, 167, 1);
-              color: rgb(4, 146, 4);
-            }
-            &__removeAll {
-              color: rgb(199, 62, 62);
-              border: 1px solid rgb(199, 62, 62);
-              &:hover {
-                color: rgb(211, 6, 6);
-                border: 1px solid rgb(211, 6, 6);
-              }
-            }
-          }
+        .formError {
+          color: red;
+          width: 20px;
+          position: absolute;
+          top: 5px;
+          right: 0;
         }
       }
-      
     }
     .fields {
       margin-bottom: 5px;
@@ -105,6 +92,7 @@
       .field {
         width: 100%;
         &__content {
+          position: relative;
           .input {
             width: 100%;
             border: 1px solid rgb(221, 221, 221);
@@ -112,13 +100,91 @@
             border-radius: 4px;
             color: rgb(119, 119, 119);
           }
+          .formError {
+            color: red;
+            width: 20px;
+          }
         }
-        
-      }
-      .desciption{
-        width: 100%;
       }
     }
   }
- 
+  .desciption {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.btn__update {
+  position: absolute;
+  top: 15px;
+  right: 27px;
+  padding: 5px 20px;
+  border: 2px solid rgb(0, 167, 0);
+  // border: none;
+  // background-color: rgb(3, 194, 3);
+  background-color: white;
+  color: rgb(0, 167, 0);
+}
+.imageUpload {
+  width: 97%;
+  position: relative;
+  .listImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-wrap: wrap;
+    display: flex;
+    z-index: 10;
+    .btn-delete {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      cursor: pointer;
+      color: rgb(190, 4, 4);
+    }
+  }
+  .drop__image {
+    border: dashed 3px rgb(180, 180, 180);
+    display: inline-block;
+    width: 100%;
+    height: 307px;
+    display: flex;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    cursor: pointer;
+    .MuiSvgIcon-root {
+      margin-bottom: 0 !important;
+    }
+
+    p {
+      color: rgb(180, 180, 180);
+      font-weight: bold;
+    }
+    .icon__upload {
+      font-size: 120px;
+      width: 100%;
+      margin: auto;
+      color: rgb(180, 180, 180);
+    }
+  }
+  .btn {
+    border: 1px solid rgb(0, 206, 0);
+    margin-right: 10px;
+    color: rgb(0, 206, 0);
+    font-weight: 600;
+    &:hover {
+      border: 1px solid rgb(1, 167, 1);
+      color: rgb(4, 146, 4);
+    }
+    &__removeAll {
+      color: rgb(199, 62, 62);
+      border: 1px solid rgb(199, 62, 62);
+      &:hover {
+        color: rgb(211, 6, 6);
+        border: 1px solid rgb(211, 6, 6);
+      }
+    }
+  }
 }
