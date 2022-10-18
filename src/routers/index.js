@@ -14,9 +14,12 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 
 const routes = () => {
+  const isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
+
   const publicRoutes = [
     { path: "/", component: Home },
     { path: "register", component: Register },
+
     { path: "admin", component: Overview, Layout: LayoutAdmin },
     { path: "user-management", component: UserManagement, Layout: LayoutAdmin },
     {

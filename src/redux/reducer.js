@@ -162,7 +162,7 @@ const rootReducer = (state = initialState, action) => {
           ...state.register,
           isLoading: false,
           currentUser: true,
-          error: null,
+          success: true
         },
       };
     case SET_REGISTER_FAILED:
