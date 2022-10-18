@@ -1,9 +1,17 @@
 import React, { useRef, useState } from "react";
+import authRequest from "../../../api/authRequest";
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import "./layout.scss";
+import { setLoginFailed } from "../../../redux";
 export const Navbar = (prop) => {
   const [profileToggle, setProfileToggle] = useState(false);
   const [checkOpenSidebar, setCheckOpenSidebar] = useState(false);
   const headerRef = useRef();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   const handleClickOutside = (event) => {
     if (headerRef.current && !headerRef.current.contains(event.target)) {
@@ -24,6 +32,12 @@ export const Navbar = (prop) => {
     setCheckOpenSidebar(!checkOpenSidebar);
     prop.handleSidebar(!checkOpenSidebar);
   };
+
+  const logout = () =>{
+    localStorage.removeItem('currentUser');
+    authRequest.logoutUser(currentUser.accessToken , dispatch);
+    dispatch(setLoginFailed());
+  }
   return (
     <div className="navbar-header">
       <div className="container-fluid">
@@ -63,11 +77,11 @@ export const Navbar = (prop) => {
             </div>
             <div className="dropdown-divider"></div>
             <a
-              href="#"
-              //   onClick={(e) => {
-              //     // e.preventDefault();
-              //     logout();
-              //   }}
+              href="/"
+                onClick={(e) => {
+                  // e.preventDefault();
+                  logout();
+                }}
               className="dropdown-item"
             >
               <span>Đăng xuất</span>

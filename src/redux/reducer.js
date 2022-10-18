@@ -28,6 +28,10 @@ import {
   // SET_ITEM_PROP_OVERLAY,
   // SET_LOADING_GET_CAR,
   SET_LOADING_GET_GENRE,
+  SET_ADD_GENRE,
+  SET_LOADING_ADD_GENRE,
+  SET_DELETE_GENRE,
+  SET_LOADING_DELETE_GENRE,
 } from "./constants";
 
 const initialState = {
@@ -59,6 +63,14 @@ const initialState = {
     getGenres: {
       isLoading: false,
       values: [],
+    },
+    addGenre: {
+      isLoading: false,
+      response: null,
+    },
+    deleteGenre: {
+      isLoading: false,
+      response: null,
     },
   },
   register: {
@@ -150,7 +162,7 @@ const rootReducer = (state = initialState, action) => {
           ...state.register,
           isLoading: false,
           currentUser: true,
-          error: null,
+          success: true
         },
       };
     case SET_REGISTER_FAILED:
@@ -315,7 +327,6 @@ const rootReducer = (state = initialState, action) => {
           },
         },
       };
-
     case SET_CLOSE_DETAIL_ORDER:
       return {
         ...state,
@@ -364,11 +375,13 @@ const rootReducer = (state = initialState, action) => {
           },
         },
       };
+
     case SET_CARS_SORT:
       return {
         ...state,
         carsSort: action.payload,
       };
+
     case SET_LOADING_GET_GENRE:
       return {
         ...state,
@@ -388,6 +401,52 @@ const rootReducer = (state = initialState, action) => {
           getGenres: {
             ...state.genre.getGenres,
             values: action.payload,
+          },
+        },
+      };
+
+    case SET_ADD_GENRE:
+      return {
+        ...state,
+        genre: {
+          ...state.genre,
+          addGenre: {
+            ...state.genre.addGenre,
+            response: action.payload,
+          },
+        },
+      };
+    case SET_LOADING_ADD_GENRE:
+      return {
+        ...state,
+        genre: {
+          ...state.genre,
+          addGenre: {
+            ...state.genre.addGenre,
+            isLoading: action.payload,
+          },
+        },
+      };
+
+    case SET_DELETE_GENRE:
+      return {
+        ...state,
+        genre: {
+          ...state.genre,
+          deleteGenre: {
+            ...state.genre.deleteGenre,
+            response: action.payload,
+          },
+        },
+      };
+    case SET_LOADING_DELETE_GENRE:
+      return {
+        ...state,
+        genre: {
+          ...state.genre,
+          deleteGenre: {
+            ...state.genre.deleteGenre,
+            isLoading: action.payload,
           },
         },
       };

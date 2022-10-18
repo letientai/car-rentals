@@ -32,10 +32,10 @@ export const TableProduct = (prop) => {
     navigate(`/product-management/${_id}`);
   };
 
-  const deteleProduct = (e, id) => {
+  const deteleProduct = (e, item) => {
     e.stopPropagation();
     setCheckDialog(true);
-    setIdDelete(id);
+    setIdDelete(item);
   };
 
   const closeDelete = (check) => {
@@ -82,7 +82,7 @@ export const TableProduct = (prop) => {
                   <TableCell align="left" className="action">
                     <div
                       className="icon-action"
-                      onClick={(e) => deteleProduct(e, item._id)}
+                      onClick={(e) => deteleProduct(e, item)}
                     >
                       <HighlightOffIcon />
                     </div>

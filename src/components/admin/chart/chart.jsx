@@ -48,7 +48,7 @@ export const ChartStatistical = () => {
   const [series, setSeries] = useState([
     {
       name: "series-1",
-      data: [90, 10, 30, 35, 70, 65, 50, 91, 70, 28, 50, 10],
+      data: [90, 10, 30, 35, 70, 65, 50, 91, 70, 28, 50, 100],
     },
   ]);
 
