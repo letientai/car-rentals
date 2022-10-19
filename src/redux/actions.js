@@ -32,7 +32,14 @@ import {
   SET_ADD_GENRE,
   SET_LOADING_ADD_GENRE,
   SET_DELETE_GENRE,
-  SET_LOADING_DELETE_GENRE, 
+  SET_LOADING_DELETE_GENRE,
+  SET_DISPLAY_ALERT,
+  SET_ITEM_PROP_ALERT,
+  SET_DATE_BOOKING,
+  SET_DATE_RETURN,
+  SET_ITEM_CAR_START,
+  SET_ITEM_CAR_SUCCESS,
+  SET_ITEM_CAR_FAILED, 
 } from "./constants";
 
 export const setDisplayOverlay = (payload) => ({
@@ -168,5 +175,36 @@ export const setDeleteGenre = (payload) => ({
 });
 export const setLoadingDeleteGenre = (payload) => ({
   type: SET_LOADING_DELETE_GENRE,
+  payload: payload,
+});
+
+export const setDisplayAlert = (payload) => ({
+  type: SET_DISPLAY_ALERT,
+  payload: payload,
+});
+export const setItemPropAlert = (payload) => ({
+  type: SET_ITEM_PROP_ALERT,
+  payload: payload,
+});
+
+export const setDateBooking = (payload) => ({
+  type: SET_DATE_BOOKING,
+  payload: payload,
+});
+export const setDateReturn = (payload) => ({
+  type: SET_DATE_RETURN,
+  payload: payload,
+});
+
+export const setItemCarStart = (payload) => ({
+  type: SET_ITEM_CAR_START,
+  payload: payload,
+});
+export const setItemCarSuccess = (payload) => ({
+  type: SET_ITEM_CAR_SUCCESS,
+  payload: payload,
+});
+export const setItemCarFailed = (payload) => ({
+  type: SET_ITEM_CAR_FAILED,
   payload: payload,
 });

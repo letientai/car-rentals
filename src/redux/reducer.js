@@ -32,6 +32,13 @@ import {
   SET_LOADING_ADD_GENRE,
   SET_DELETE_GENRE,
   SET_LOADING_DELETE_GENRE,
+  SET_DISPLAY_ALERT,
+  SET_ITEM_PROP_ALERT,
+  SET_DATE_BOOKING,
+  SET_DATE_RETURN,
+  SET_ITEM_CAR_START,
+  SET_ITEM_CAR_SUCCESS,
+  SET_ITEM_CAR_FAILED,
 } from "./constants";
 
 const initialState = {
@@ -39,7 +46,24 @@ const initialState = {
     displayOverlay: false,
     itemPropOverlay: <></>,
   },
+  alert: {
+    displayAlert: false,
+    itemPropAlert: <></>,
+  },
+
+  dateTime: {
+    dateBooking: null,
+    dateReturn: null,
+  },
+
   car: {
+    getItemCar: {
+      isLoading: false,
+      error: null,
+      success: false,
+      value: null,
+    },
+
     getCars: {
       isLoading: false,
       values: null,
@@ -162,7 +186,7 @@ const rootReducer = (state = initialState, action) => {
           ...state.register,
           isLoading: false,
           currentUser: true,
-          success: true
+          success: true,
         },
       };
     case SET_REGISTER_FAILED:
@@ -447,6 +471,77 @@ const rootReducer = (state = initialState, action) => {
           deleteGenre: {
             ...state.genre.deleteGenre,
             isLoading: action.payload,
+          },
+        },
+      };
+
+    case SET_DISPLAY_ALERT:
+      return {
+        ...state,
+        alert: {
+          ...state.alert,
+          displayAlert: action.payload,
+        },
+      };
+    case SET_ITEM_PROP_ALERT:
+      return {
+        ...state,
+        alert: {
+          ...state.alert,
+          itemPropAlert: action.payload,
+        },
+      };
+
+    case SET_DATE_BOOKING:
+      return {
+        ...state,
+        dateTime: {
+          ...state.dateTime,
+          dateBooking: action.payload,
+        },
+      };
+    case SET_DATE_RETURN:
+      return {
+        ...state,
+        dateTime: {
+          ...state.dateTime,
+          dateReturn: action.payload,
+        },
+      };
+
+    case SET_ITEM_CAR_START:
+      return {
+        ...state,
+        car: {
+          ...state,
+          getItemCar: {
+            ...state.getItemCar,
+            isLoading: true,
+          },
+        },
+      };
+    case SET_ITEM_CAR_SUCCESS:
+      return {
+        ...state,
+        car: {
+          ...state,
+          getItemCar: {
+            ...state.getItemCar,
+            isLoading: false,
+            values: action.payload,
+            success: true,
+          },
+        },
+      };
+    case SET_ITEM_CAR_FAILED:
+      return {
+        ...state,
+        car: {
+          ...state,
+          getItemCar: {
+            ...state.getItemCar,
+            isLoading: false,
+            error: true,
           },
         },
       };

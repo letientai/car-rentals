@@ -11,6 +11,20 @@ import {
 const authRequest = {
   registerUser: async (user, dispatch, navigate) => {
     dispatch(setRegisterStart());
+    try {
+      const { data } = await axios.post(
+        "https://api-rental-carl.herokuapp.com/auth/register",
+        user,
+      );
+      dispatch(setLoginSuccess(data));
+      dispatch(setRegisterSuccess());
+      localStorage.setItem("currentUser", JSON.stringify(data));
+    } catch (error) {
+      dispatch(setRegisterFailed(error));
+    }
+  },
+  AdminregisterUser: async (user, dispatch, navigate) => {
+    dispatch(setRegisterStart());
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const AuthStr = "bearer ".concat(currentUser.accessToken);
     try {

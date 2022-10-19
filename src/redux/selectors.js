@@ -6,4 +6,6 @@ export const registerSelector = (value) => value.register;
 export const loginSelector = (value) => value.login;
 export const userSelector = (value) => value.user;
 export const sendIdDetailSelector = (value) => value.sendIdDetail;
-export const  carsSortSelector= (value) => value.carsSort;
+export const carsSortSelector = (value) => value.carsSort;
+export const alertSelector = (value) => value.alert;
+export const dateTimeSelector = (value) => value.dateTime;

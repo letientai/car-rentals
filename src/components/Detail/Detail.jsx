@@ -1,7 +1,12 @@
 import { Input } from "@mui/material";
 import { Container, Grid } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import carRequest from "../../api/carRequest";
+import { alertSelector, carSelector } from "../../redux";
+import { AlertMessage } from "../alert/alert";
 import "./Detail.scss";
+import { SidebarDetail } from "./sidebarDetail";
 const car = {
   _id: "63410a11f21557bf24bc2b66",
   genre: {
@@ -26,8 +31,20 @@ const car = {
   __v: 0,
 };
 const Detail = ({ id }) => {
+  const alert = useSelector(alertSelector);
+  const dispatch = useDispatch();
+  const {getItemCar} = useSelector(carSelector)
+  useEffect(() =>{
+    carRequest.getItemCar(id, dispatch)
+  },[])
   return (
-    <Container maxWidth="lg" className="detail">
+    <Container
+      maxWidth="lg"
+      className="detail"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <h1 className="carName">{car.name}</h1>
       <Grid container spacing={2}>
         <Grid item md={7} sm={12} xs={12}>
@@ -82,10 +99,10 @@ const Detail = ({ id }) => {
                     - Và chọn 1 trong 2 hình thức
                   </li>
                   <li className="papers_items">
-                  + Passport hoặc Hộ khẩu hoặc KT3 (giữ lại)
+                    + Passport hoặc Hộ khẩu hoặc KT3 (giữ lại)
                   </li>
                   <li className="papers_items">
-                  + Căn cước công dân gắn chip (đối chiếu)
+                    + Căn cước công dân gắn chip (đối chiếu)
                   </li>
                 </ul>
               </div>
@@ -93,8 +110,8 @@ const Detail = ({ id }) => {
             <div className="car_mortgage">
               <span className="mortgage_collateral">Tài sản thế chấp</span>
               <p className="collateral_content">
-                15 triệu (tiền mặt/chuyển khoản cho chủ xe khi nhận xe)<br></br> hoặc Xe
-                máy (kèm cà vẹt gốc) giá trị 15 triệu
+                15 triệu (tiền mặt/chuyển khoản cho chủ xe khi nhận xe)<br></br>{" "}
+                hoặc Xe máy (kèm cà vẹt gốc) giá trị 15 triệu
               </p>
             </div>
             <div className="car_proviso">
@@ -117,9 +134,7 @@ const Detail = ({ id }) => {
           </div>
         </Grid>
         <Grid item md={5} sm={12} xs={12}>
-          <div className="unitPrices">
-            <div>{car.unitPrice}</div>
-          </div>
+          <SidebarDetail />
         </Grid>
       </Grid>
     </Container>
