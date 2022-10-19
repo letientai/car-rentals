@@ -9,3 +9,5 @@ export const sendIdDetailSelector = (value) => value.sendIdDetail;
 export const carsSortSelector = (value) => value.carsSort;
 export const alertSelector = (value) => value.alert;
 export const dateTimeSelector = (value) => value.dateTime;
+export const toastMessageSelector= (value) => value.toastMessage;
+export const isLoadingGlobalSelector= (value) => value.isLoadingGlobal;
