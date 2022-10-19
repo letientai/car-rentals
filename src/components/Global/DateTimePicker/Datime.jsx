@@ -8,7 +8,6 @@ import Stack from '@mui/material/Stack';
 
 export default function DateTime() {
   const [value, setValue] = React.useState(dayjs(Date.now()));
-  console.log(value);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={3}>

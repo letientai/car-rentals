@@ -45,3 +45,16 @@ export const SET_LOADING_ADD_GENRE = "set_loading_add_genre";
 
 export const SET_DELETE_GENRE = "set_delete_genre";
 export const SET_LOADING_DELETE_GENRE = "set_loading_delete_genre";
+
+export const SET_DISPLAY_ALERT = "set_display_alert";
+export const SET_ITEM_PROP_ALERT = "set_item_prop_alert";
+
+export const SET_DATE_BOOKING = "set_date_booking";
+export const SET_DATE_RETURN = "set_date_return";
+
+export const SET_ITEM_CAR_START = "set_item_car_start";
+export const SET_ITEM_CAR_SUCCESS = "set_item_car_success";
+export const SET_ITEM_CAR_FAILED = "set_item_car_failed";
+
+export const SET_TOTAL_RENTAL_DAYS = "set_total_rental_days";
+export const SET_RENTAL_INFOMATION = "set_rental_infomation";
