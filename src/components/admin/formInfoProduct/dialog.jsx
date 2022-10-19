@@ -69,7 +69,7 @@ export default function AlertDialog({
         unitPrice: parseInt(dataProduct.unitPrice),
         insuranceFees: parseInt(dataProduct.insuranceFees),
         // images: dataProduct?.image || "",
-        available: true,
+        available: dataProduct.available,
         description: dataProduct.description,
         seats: dataProduct.seats,
         fuel: dataProduct.fuel,

@@ -15,12 +15,15 @@ import {
   setDateReturn,
   setDisplayAlert,
   setItemPropAlert,
+  setTotalRentalDays,
 } from "../../redux";
+
 export const LineFormDateTime = ({ check }) => {
   const [value, setValue] = React.useState(dayjs(Date.now()));
   const [titleForm, setTitleForm] = useState("");
   const dispatch = useDispatch();
   const dateTime = useSelector(dateTimeSelector);
+  const [totalDate, setTotalDate] = useState(1);
 
   useEffect(() => {
     if (check === "booking") {
@@ -28,16 +31,25 @@ export const LineFormDateTime = ({ check }) => {
       dispatch(setDateBooking(dayjs(Date.now())));
     } else {
       setTitleForm("Ngày trả xe");
-      dispatch(setDateReturn(dayjs(Date.now())));
+      setValue(dayjs(Date.now()).add(1, "day"));
+      dispatch(setDateReturn(dayjs(Date.now()).add(1, "day")));
     }
   }, []);
+
+  useEffect(() => {
+    const date1 = dayjs(dateTime?.dateBooking);
+    const date2 = dayjs(dateTime?.dateReturn);
+    const diff = date2.diff(date1, "day", true);
+    const days = Math.round(diff);
+    dispatch(setTotalRentalDays(days));
+  }, [value]);
   const handleDateTime = (newValue) => {
     if (newValue - dayjs(Date.now()) < -85552334) {
       dispatch(setItemPropAlert("Không được nhập trước ngày hiện tại"));
       dispatch(setDisplayAlert(true));
     } else {
       if (check === "booking") {
-        if (newValue > dateTime.dateReturn) {
+        if (newValue > dateTime.dateReturn - 85552334) {
           dispatch(setItemPropAlert("Ngày thuê phải trước ngày trả"));
           dispatch(setDisplayAlert(true));
         } else {
@@ -45,7 +57,7 @@ export const LineFormDateTime = ({ check }) => {
           dispatch(setDateBooking(newValue));
         }
       } else {
-        if (newValue < dateTime.dateBooking) {
+        if (newValue < dateTime.dateBooking + 85552334) {
           dispatch(setItemPropAlert("Ngày trả phải sau ngày thuê"));
           dispatch(setDisplayAlert(true));
         } else {

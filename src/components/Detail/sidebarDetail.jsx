@@ -1,18 +1,63 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  carSelector,
+  dateTimeSelector,
+  setDisplayAlert,
+  setItemPropAlert,
+  setRentalInfomation,
+} from "../../redux";
 import { CarBill } from "./carBill";
 import { LineFormDateTime } from "./lineFormDateTime";
 
 export const SidebarDetail = () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const dateBooking = "booking";
   const dateReturn = "return";
+  const dateTime = useSelector(dateTimeSelector);
+  const { getItemCar } = useSelector(carSelector);
+  const TotalRental =
+    getItemCar?.values?.unitPrice + getItemCar?.values?.insuranceFees + 51948;
+
+  const dispatch = useDispatch();
+
+  const handleRental = () => {
+    const rentalInformation = {
+      car: getItemCar?.values,
+      bookingDate: dateTime?.dateBooking,
+      returnDate: dateTime?.dateReturn,
+      totalRentalDays: dateTime?.totalRentalDays,
+      totalRent: TotalRental,
+    };
+    if (!currentUser) {
+      dispatch(setItemPropAlert("Đăng nhập để thực hiện chức năng này"));
+      dispatch(setDisplayAlert(true));
+    } else {
+      dispatch(setRentalInfomation(rentalInformation));
+      localStorage.setItem(
+        "rentalInformation",
+        JSON.stringify(rentalInformation)
+      );
+    }
+  };
+  const disableRental =() =>{
+    console.log("disable");
+  }
   return (
     <div className="sidebar-detail">
       <div className="rent-box">
         <div className="price">
-          <span>800k</span>
+          <span>
+            {Math.round((getItemCar?.values?.unitPrice / 1000) * 1.1)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+            K
+          </span>
           <h3>
-            680K
-            <span>/ ngày</span>
+            {(getItemCar?.values?.unitPrice / 1000)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+            K<span>/ ngày</span>
           </h3>
         </div>
         <LineFormDateTime check={dateBooking} />
@@ -45,8 +90,15 @@ export const SidebarDetail = () => {
             </p>
           </div>
         </div>
-        <CarBill/>
-        <div className="wrap-btn">Đặt xe</div>
+        <CarBill />
+        <div
+          className={
+            getItemCar?.values?.available ? "wrap-btn" : "wrap-btn disable"
+          }
+          onClick={getItemCar?.values?.available ? handleRental : disableRental}
+        >
+          Đặt xe
+        </div>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import {
   setItemCarStart,
   setItemCarSuccess,
   setLoadingGetCar,
+  setLoadingGlobal,
 } from "../redux";
 
 const carRequest = {
@@ -27,12 +28,15 @@ const carRequest = {
 
   getItemCar: async (id, dispatch) => {
     dispatch(setItemCarStart());
+    dispatch(setLoadingGlobal(true));
     try {
       const res = await axios.get(`http://api-rental-carl.herokuapp.com/car/${id}`);
       dispatch(setItemCarSuccess(res.data));
+      dispatch(setLoadingGlobal(false));
     } catch (error) {
       console.log(error);
       dispatch(setItemCarFailed());
+      dispatch(setLoadingGlobal(false));
 
     }
   },

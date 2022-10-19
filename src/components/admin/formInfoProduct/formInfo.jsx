@@ -19,7 +19,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
     { value: false, label: "Đang thuê" },
   ];
 
-  const [Availables, setOptionAvailable] = useState(optionsAvailable[0].value);
+  const [Availables, setOptionAvailable] = useState(false);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState([]);
   const location = useLocation();
@@ -52,6 +52,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
               setDataProduct(response2.data);
               setDescription(response2.data?.description);
               setChooseGenre(response2.data?.genre?._id);
+              setOptionAvailable(response2.data?.available);
 
               setImage(response2.data.images);
               setDefaultGenre(
@@ -86,6 +87,8 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
   };
   const handleChangeAvailable = (selectedOption) => {
     setOptionAvailable(selectedOption.value);
+    console.log(selectedOption.value);
+
   };
 
   const initialValues = {
@@ -227,11 +230,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
                         options={optionsAvailable}
                         placeholder=""
                         defaultValue={
-                          !checkAddProduct
-                            ? Availables
-                              ? optionsAvailable[1]
-                              : optionsAvailable[0]
-                            : optionsAvailable[0]
+                          !checkAddProduct ? Availables ? optionsAvailable[0] : optionsAvailable[1] : optionsAvailable[0]
                         }
                         onChange={handleChangeAvailable}
                       />

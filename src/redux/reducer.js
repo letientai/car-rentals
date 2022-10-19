@@ -41,15 +41,17 @@ import {
   SET_ITEM_CAR_START,
   SET_ITEM_CAR_SUCCESS,
   SET_ITEM_CAR_FAILED,
+  SET_TOTAL_RENTAL_DAYS,
+  SET_RENTAL_INFOMATION,
 } from "./constants";
 
 const initialState = {
   toastMessage: {
-    display : false,
-    title : "",
-    mess : "",
+    display: false,
+    title: "",
+    mess: "",
   },
-  isLoadingGlobal : false,
+  isLoadingGlobal: false,
   overlay: {
     displayOverlay: false,
     itemPropOverlay: <></>,
@@ -62,6 +64,7 @@ const initialState = {
   dateTime: {
     dateBooking: null,
     dateReturn: null,
+    totalRentalDays: 0,
   },
 
   car: {
@@ -135,6 +138,10 @@ const initialState = {
       checkOpen: false,
       values: null,
     },
+  },
+
+  rentalInfomation: {
+    values: null,
   },
 };
 
@@ -439,13 +446,13 @@ const rootReducer = (state = initialState, action) => {
     case SET_TOAST_MESSAGE:
       return {
         ...state,
-        toastMessage : action.payload,
-      }
+        toastMessage: action.payload,
+      };
     case SET_LOADING_GLOBAL:
       return {
         ...state,
-        isLoadingGlobal : action.payload,
-      }
+        isLoadingGlobal: action.payload,
+      };
 
     case SET_ADD_GENRE:
       return {
@@ -531,7 +538,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         car: {
-          ...state,
+          ...state.car,
           getItemCar: {
             ...state.getItemCar,
             isLoading: true,
@@ -542,7 +549,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         car: {
-          ...state,
+          ...state.car,
           getItemCar: {
             ...state.getItemCar,
             isLoading: false,
@@ -555,12 +562,29 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         car: {
-          ...state,
+          ...state.car,
           getItemCar: {
             ...state.getItemCar,
             isLoading: false,
             error: true,
           },
+        },
+      };
+    case SET_TOTAL_RENTAL_DAYS:
+      return {
+        ...state,
+        dateTime: {
+          ...state.dateTime,
+          totalRentalDays: action.payload,
+        },
+      };
+
+    case SET_RENTAL_INFOMATION:
+      return {
+        ...state,
+        rentalInfomation: {
+          ...state.rentalInfomation,
+          values: action.payload,
         },
       };
 

@@ -7,21 +7,46 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    .status{
+      border-radius: 6px;
+      margin-top: 40px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b60505;
+      width: 20%;
+      min-width: 200px;
+      background-color: rgb(255, 255, 255);
+    }
+  }
   .carName {
     margin-top: 40px;
     font-size: 36px;
     font-weight: 600;
-    padding: 0px 16px;
+    // padding: 0px 16px;
     margin-bottom: 15px;
     color: #ffffff;
   }
 
-  .carImages {
-    height: 340px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    border-radius: 6px;
+  .wrap_image {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    .carImages {
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-radius: 6px;
+      width: 100%;
+    }
   }
   .unitPrices {
     height: max-content;
@@ -292,4 +317,8 @@
   white-space: nowrap;
   text-transform: uppercase;
   margin-top: 30px;
+  cursor: pointer;
+}
+.disable{
+  background-color: #6e6e6e;
 }
