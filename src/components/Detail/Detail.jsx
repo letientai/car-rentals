@@ -75,6 +75,9 @@ const Detail = ({ id }) => {
                       <li className="car_fuel">
                         Nhiên liệu: {getItemCar?.values?.fuel}
                       </li>
+                      <li className="car_fuel">
+                        Hãng: {getItemCar?.values?.genre?.label}
+                      </li>
                     </ul>
                   </div>
                 </div>

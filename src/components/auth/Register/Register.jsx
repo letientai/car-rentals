@@ -13,9 +13,7 @@ import authRequest from "../../../api/authRequest";
 import { useNavigate } from "react-router-dom";
 const RegisterConponent = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  useEffect(() => {
-    console.log(currentUser);
-  }, []);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const formik = useFormik({

@@ -8,9 +8,7 @@ export const CarBill = () => {
   const TotalRental =
     getItemCar?.values?.unitPrice + getItemCar?.values?.insuranceFees + 51948;
   return (
-    <div className="car-bill" onClick={() =>{
-      console.log(getItemCar?.values?.available);
-    }}>
+    <div className="car-bill" >
       <div className="title">Chi tiết giá</div>
       <div className="bill-wrap">
         <div className="group">

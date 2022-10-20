@@ -7,7 +7,6 @@ import { genreSelector } from "../../../redux";
 import "./genreManagement.scss";
 export const GenreManagement = () => {
   const { addGenre, deleteGenre } = useSelector(genreSelector);
-  console.log(deleteGenre?.isLoading);
   return (
     <div className="genreManagement-container">
       <div className="header">

@@ -12,3 +12,6 @@ export const dateTimeSelector = (value) => value.dateTime;
 export const toastMessageSelector= (value) => value.toastMessage;
 export const isLoadingGlobalSelector= (value) => value.isLoadingGlobal;
 export const rentalInfomationSelector= (value) => value.rentalInfomation;
+export const rentedCarsSelector= (value) => value.rentedCars;
+export const itemRentedCarsSelector= (value) => value.itemRentedCars;
+export const listItemRentedCarsSelector= (value) => value.listItemRentedCars;

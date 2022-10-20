@@ -1,0 +1,100 @@
+.checkout_content {
+  background-color: rgb(243, 243, 243);
+}
+.infoUser {
+  width: 100%;
+  &_header {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+  }
+  &_form {
+    width: 100%;
+    .form_fields {
+      width: 100%;
+      .row1 {
+        width: 100%;
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .dateTime {
+          width: 100%;
+          background-color: white;
+        }
+        .formError {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          color: red;
+        }
+        .input {
+          min-width: 300px;
+          width: 100%;
+          padding: 7px 10px;
+          border-radius: 2px;
+          border: 1px solid rgb(226, 226, 226);
+        }
+      }
+      .btn__rental {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        color: #fff;
+        background-color: #00a550;
+        border: none;
+        &:hover {
+          background-color: #008d44;
+        }
+      }
+    }
+  }
+}
+.infoRetal {
+  width: 100%;
+  &_car_image {
+    width: 100%;
+    margin-top: 20px;
+    .wrap_image {
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 320px;
+      .carImages {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 6px;
+        width: 100%;
+      }
+    }
+  }
+  &_car_name {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+  }
+  .sub_charac {
+    font-size: 14px;
+    width: 100%;
+    margin: 15px 0;
+    background-color: white;
+    display: flex;
+    padding-top: 10px;
+    .list_charac {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      .car_seats,
+      .car_driveTrains,
+      .car_fuel {
+        width: 50%;
+        margin-bottom: 1rem;
+        padding-left: 8px;
+        font-size: 18px;
+      }
+    }
+  }
+}

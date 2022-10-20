@@ -27,11 +27,8 @@ export const TableGenre = () => {
   }, []);
   const fetchDataUser = () => {
     carRequest.getGenre(dispatch);
-    console.log();
   };
-//   useEffect(() => {
-// console.log(getGenre);
-//   },[getGenre])
+
 
   const deteleGenre = (e, item) =>{
     e.stopPropagation();

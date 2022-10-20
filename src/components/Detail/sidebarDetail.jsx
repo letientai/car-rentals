@@ -1,10 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   carSelector,
   dateTimeSelector,
   setDisplayAlert,
+  setDisplayOverlay,
   setItemPropAlert,
+  setItemPropOverlay,
   setRentalInfomation,
 } from "../../redux";
 import { CarBill } from "./carBill";
@@ -20,6 +23,7 @@ export const SidebarDetail = () => {
     getItemCar?.values?.unitPrice + getItemCar?.values?.insuranceFees + 51948;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleRental = () => {
     const rentalInformation = {
@@ -38,11 +42,14 @@ export const SidebarDetail = () => {
         "rentalInformation",
         JSON.stringify(rentalInformation)
       );
+      dispatch(setDisplayOverlay(false));
+      dispatch(setItemPropOverlay(<></>));
+      navigate("/checkout");
     }
   };
-  const disableRental =() =>{
+  const disableRental = () => {
     console.log("disable");
-  }
+  };
   return (
     <div className="sidebar-detail">
       <div className="rent-box">

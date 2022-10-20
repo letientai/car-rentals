@@ -34,7 +34,8 @@ const CarCard = ({ itemCar, responsive }) => {
             ></div>
           ))}
           <div className="item__card_price">
-            <span>{itemCar.unitPrice}/ngày</span>
+            <span>{itemCar.unitPrice.toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ/ngày</span>
           </div>
         </div>
         <h5 className="item__card_name">{itemCar.name}</h5>

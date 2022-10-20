@@ -9,172 +9,17 @@ import Paper from "@mui/material/Paper";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenDetailOrder } from "../../../redux";
+import { rentedCarsSelector, setOpenDetailOrder } from "../../../redux";
+import rentalRequest from "../../../api/rentalRequest";
 export const TableOrder = () => {
   const dispatch = useDispatch();
-
-  const data = [
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-    {
-      name: "áhháhd",
-      phone: "1231231",
-      address: "sadahsda",
-      province: "ádháudiha",
-      email: "ádhaoíhd",
-    },
-  ];
-
-  const openDetailOrder = ( item) => {
-    dispatch(setOpenDetailOrder(item))
+  const listRentedCars = useSelector(rentedCarsSelector);
+  const openDetailOrder = (item) => {
+    dispatch(setOpenDetailOrder(item));
   };
   useEffect(() => {
-  });
+    rentalRequest.getCarRental(dispatch);
+  }, []);
   return (
     <div className="tableOrder">
       <TableContainer component={Paper}>
@@ -191,25 +36,25 @@ export const TableOrder = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.map((item, index) => (
+            {listRentedCars?.values?.map((item, index) => (
               <TableRow
                 key={index}
                 className="productRow"
                 onClick={(e) => openDetailOrder(item)}
               >
                 <TableCell component="th" scope="row">
-                  {index}
+                  {item._id}
                 </TableCell>
-                <TableCell align="left">{item.name}</TableCell>
-                <TableCell align="left">{item.phone}</TableCell>
                 <TableCell align="left">
-                  {item.address + " " + item.province}
+                  {item?.user_id?.lastName + " " + item?.user_id?.firstName}
                 </TableCell>
-                <TableCell align="left">{item.email}</TableCell>
+                <TableCell align="left">{item.phone}</TableCell>
+                <TableCell align="left">{item?.car_id?.name}</TableCell>
+                <TableCell align="left">{item?.plight}</TableCell>
                 <TableCell align="left" className="action">
-                  <div className="icon-action">
+                  {/* <div className="icon-action">
                     <HighlightOffIcon />
-                  </div>
+                  </div> */}
                   <div
                     className="icon-action"
                     //   onClick={(e) => showInfOrder(item)}
