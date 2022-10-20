@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./formDetailOrder.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { sendIdDetailSelector, setCloseDetailOrder } from "../../../redux";
+import dateFormat from "dateformat";
 
 export const FormDetailOrder = (prop) => {
-  const [orderStatus, setOrderStatus] = useState(0);
+  const [orderStatus, setOrderStatus] = useState(1);
   const dispatch = useDispatch();
   const { openForm } = useSelector(sendIdDetailSelector);
   const data = openForm.values;
 
+  useEffect(()=>{
+    if(data?.plight === "Vừa đặt"){
+      setOrderStatus(4)
+    }
+  },[])
   const handleSelectChange = (e) => {
     const order = parseInt(e.target.value);
+    console.log(order);
     setOrderStatus(order);
   };
   const closeForm = () => {
@@ -23,29 +30,48 @@ export const FormDetailOrder = (prop) => {
           <h3>Thông tin chi tiết đơn hàng</h3>
         </div>
         <div className="content">
-          <div className="row">Tên khách hàng: {data?.name}</div>
-          <div className="row">Số điện thoại: {data?.phone}</div>
+          <div className="row">Mã đơn hàng: {data?._id}</div>
           <div className="row">
-            Địa chỉ: {data?.address + " " + data?.province}
+            Tên khách hàng:{" "}
+            {data?.user_id?.lastName + " " + data?.user_id?.firstName}
           </div>
-          <div className="row">Email: {data?.email}</div>
+          <div className="row">Số điện thoại: {data?.phone}</div>
+          <div className="row">Giấy phép lái xe: {data?.gplx}</div>
+          <div className="row">
+            Ngày sinh: {dateFormat(data?.birthday, "dd/mm/yyyy")}
+          </div>
+          <div className="row">Email: {data?.user_id?.email}</div>
           <div className="row">
             <h4>Thông tin đơn thuê</h4>
-            {/* {data?.listProduct.map((item, index) => (
-              <div className="card-item" key={index}>
-                <div className="card-item-id">
-                  ID sản phẩm: {item.product_id}
-                </div>
-                <div className="card-item-name">{item.product_name}</div>
-                <div className="card-item-name">Số lượng: {item.quantity}</div>
-                <div className="card-item-name">
-                  {item.selected_options[0].group_name +
-                    " " +
-                    ":" +
-                    item.selected_options[0].option_name}
-                </div>
+            <div className="card-item">
+              <div className="card-item-id">Mã xe: {data?.car_id?._id}</div>
+              <div className="card-item-name">Tên xe {data?.car_id?.name}</div>
+              <div className="card-item-name">
+                Ngày thuê: {dateFormat(data?.rentDate, "dd/mm/yyyy")}
               </div>
-            ))} */}
+              <div className="card-item-name">
+                Ngày trả: {dateFormat(data?.returnDate, "dd/mm/yyyy")}
+              </div>
+              <div className="card-item-name">
+                Số ngày thuê: {data?.totalDays}
+              </div>
+              <div className="card-item-name">
+                Phí thuê:{" "}
+                {data?.totalPrice
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                đ
+              </div>
+              <div className="card-item-name">
+                <b>
+                  Tổng tiền:{" "}
+                  {(data?.totalPrice * data?.totalDays)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                  đ
+                </b>
+              </div>
+            </div>
           </div>
           <div className="row">
             Trạng thái đơn hàng:
@@ -55,9 +81,9 @@ export const FormDetailOrder = (prop) => {
               className="select-status"
             >
               <option value="1">Vừa đặt</option>
-              <option value="2">Đang giao</option>
-              <option value="3">Đã nhận</option>
-              <option value="4">Gửi trả</option>
+              <option value="2">Đang thuê</option>
+              <option value="3">Đã thuê</option>
+              <option value="4">Hủy</option>
             </select>
           </div>
           <div className="row-btn">

@@ -61,7 +61,7 @@ export const TableProduct = (prop) => {
                 <TableCell align="left">Tên xe</TableCell>
                 <TableCell align="left">Loại</TableCell>
                 <TableCell align="left">Số ghế</TableCell>
-                <TableCell align="left">Nhiên liệu</TableCell>
+                <TableCell align="left">Trạng thái</TableCell>
                 <TableCell align="left">Hành động</TableCell>
               </TableRow>
             </TableHead>
@@ -78,7 +78,7 @@ export const TableProduct = (prop) => {
                   <TableCell align="left">{item?.name}</TableCell>
                   <TableCell align="left">{item?.genre?.label}</TableCell>
                   <TableCell align="left">{item?.seats}</TableCell>
-                  <TableCell align="left">{item?.fuel}</TableCell>
+                  <TableCell align="left">{item?.available ? "Còn trống" : "Đã được thuê"}</TableCell>
                   <TableCell align="left" className="action">
                     <div
                       className="icon-action"

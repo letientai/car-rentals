@@ -44,26 +44,21 @@ export const LineFormDateTime = ({ check }) => {
     dispatch(setTotalRentalDays(days));
   }, [value]);
   const handleDateTime = (newValue) => {
-    if (newValue - dayjs(Date.now()) < -85552334) {
-      dispatch(setItemPropAlert("Không được nhập trước ngày hiện tại"));
-      dispatch(setDisplayAlert(true));
-    } else {
-      if (check === "booking") {
-        if (newValue > dateTime.dateReturn - 85552334) {
-          dispatch(setItemPropAlert("Ngày thuê phải trước ngày trả"));
-          dispatch(setDisplayAlert(true));
-        } else {
-          setValue(newValue);
-          dispatch(setDateBooking(newValue));
-        }
+    if (check === "booking") {
+      if (newValue > dateTime.dateReturn - 85552334) {
+        dispatch(setItemPropAlert("Ngày thuê phải trước ngày trả"));
+        dispatch(setDisplayAlert(true));
       } else {
-        if (newValue < dateTime.dateBooking + 85552334) {
-          dispatch(setItemPropAlert("Ngày trả phải sau ngày thuê"));
-          dispatch(setDisplayAlert(true));
-        } else {
-          setValue(newValue);
-          dispatch(setDateReturn(newValue));
-        }
+        setValue(newValue);
+        dispatch(setDateBooking(newValue));
+      }
+    } else {
+      if (newValue < dateTime.dateBooking + 85552334) {
+        dispatch(setItemPropAlert("Ngày trả phải sau ngày thuê"));
+        dispatch(setDisplayAlert(true));
+      } else {
+        setValue(newValue);
+        dispatch(setDateReturn(newValue));
       }
     }
   };
@@ -73,6 +68,7 @@ export const LineFormDateTime = ({ check }) => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Stack spacing={3}>
           <DesktopDatePicker
+            disablePast
             renderInput={(params) => <TextField {...params} />}
             value={value}
             onChange={(newValue) => handleDateTime(newValue)}

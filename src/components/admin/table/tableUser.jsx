@@ -27,7 +27,6 @@ export const TableUser = () => {
   }, [success]);
   const fetchDataUser = () => {
     userRequest.getUserApi(dispatch);
-    console.log();
   };
   const moveToDetail = (id) => {
     navigate(`/user-management/${id}`);

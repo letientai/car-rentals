@@ -44,7 +44,12 @@ import {
   SET_ITEM_CAR_SUCCESS,
   SET_ITEM_CAR_FAILED,
   SET_TOTAL_RENTAL_DAYS,
-  SET_RENTAL_INFOMATION, 
+  SET_RENTAL_INFOMATION,
+  SET_BIRTHDAY_USER,
+  SET_AGE_USER,
+  GET_RENTED_CARS,
+  GET_ITEM_RENTED_CARS,
+  PUSH_ITEM_RENTED_CARS, 
 } from "./constants";
 
 export const setDisplayOverlay = (payload) => ({
@@ -238,5 +243,25 @@ export const setTotalRentalDays = (payload) => ({
 
 export const setRentalInfomation = (payload) => ({
   type: SET_RENTAL_INFOMATION,
+  payload: payload,
+});
+
+export const setBirthdayUser= (payload) => ({
+  type: SET_BIRTHDAY_USER,
+  payload: payload,
+});
+
+export const setAgeUser= (payload) => ({
+  type: SET_AGE_USER,
+  payload: payload,
+});
+
+
+export const getRentedCar= (payload) => ({
+  type: GET_RENTED_CARS,
+  payload: payload,
+});
+export const getItemRentedCar= (payload) => ({
+  type: GET_ITEM_RENTED_CARS,
   payload: payload,
 });

@@ -10,6 +10,7 @@ import { ProductDetail } from "../pages/admin/productDetail/productDetail";
 import { ProductManagement } from "../pages/admin/productmanagement/productManagement";
 import { UserDetail } from "../pages/admin/userDetail/userDetail";
 import { UserManagement } from "../pages/admin/userManagement/userManagement";
+import { Checkout } from "../pages/checkout/checkout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 
@@ -54,6 +55,7 @@ const routes = () => {
     },
     { path: "search", component: ItemRenderSearch, Layout: SearchLayout },
     { path: "account", component: Account },
+    { path: "checkout", component: Checkout },
   ];
   const privateRoutes = [{ path: "/" }];
   return {

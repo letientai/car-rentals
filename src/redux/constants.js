@@ -60,3 +60,11 @@ export const SET_ITEM_CAR_FAILED = "set_item_car_failed";
 
 export const SET_TOTAL_RENTAL_DAYS = "set_total_rental_days";
 export const SET_RENTAL_INFOMATION = "set_rental_infomation";
+
+export const SET_BIRTHDAY_USER = "set_birthday_user";
+export const SET_AGE_USER = "set_age_user";
+
+export const GET_RENTED_CARS = "set_rented_cars";
+export const GET_ITEM_RENTED_CARS = "set_item_rented_cars";
+
+

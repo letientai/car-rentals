@@ -24,8 +24,6 @@ import {
   SET_USER_START,
   SET_USER_SUCCESS,
   SET_ITEM_GENRE,
-  // SET_ITEM_PROP_OVERLAY,
-  // SET_LOADING_GET_CAR,
   SET_LOADING_GET_GENRE,
   SET_TOAST_MESSAGE,
   SET_LOADING_GLOBAL,
@@ -44,6 +42,10 @@ import {
   SET_ITEM_CAR_FAILED,
   SET_TOTAL_RENTAL_DAYS,
   SET_RENTAL_INFOMATION,
+  SET_BIRTHDAY_USER,
+  SET_AGE_USER,
+  GET_RENTED_CARS,
+  GET_ITEM_RENTED_CARS,
 } from "./constants";
 
 const initialState = {
@@ -123,6 +125,10 @@ const initialState = {
     error: null,
   },
   user: {
+    birthday: {
+      age: null,
+      date: null,
+    },
     getUsers: {
       isLoading: false,
       values: null,
@@ -135,6 +141,15 @@ const initialState = {
       success: false,
       error: null,
     },
+  },
+
+  rentedCars: {
+    values: null,
+    list: [],
+  },
+
+  itemRentedCars: {
+    values: null,
   },
 
   sendIdDetail: {
@@ -600,6 +615,33 @@ const rootReducer = (state = initialState, action) => {
         rentalInfomation: {
           ...state.rentalInfomation,
           values: action.payload,
+        },
+      };
+
+    case SET_BIRTHDAY_USER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          birthday: action.payload,
+        },
+      };
+    case GET_RENTED_CARS:
+      return {
+        ...state,
+        rentedCars: {
+          ...state.rentedCars,
+          values: action.payload,
+        },
+      };
+
+    case GET_ITEM_RENTED_CARS:
+      return {
+        ...state,
+        itemRentedCars: {
+          ...state.itemRentedCars,
+          values: action.payload,
+          // list: [ ...state.itemRentedCars.list, action.payload]
         },
       };
 
