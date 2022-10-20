@@ -3,19 +3,19 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { carSelector, carsSortSelector, setCarsSort } from '../../../redux';
+import { carSelector, carsSortSelector, setCarsSortSuccess } from '../../../redux';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function SelectGlobal({fields , title,setOptionsSort}) {
   const [sort, setSort] = React.useState('');
   const dispatch = useDispatch();
-  const carsSort = useSelector(carsSortSelector);
+  const {values} = useSelector(carsSortSelector);
   const {getCars} = useSelector(carSelector);
   const handleChange = (event) => {
     setSort(event.target.value);
-    const sortCars = [...carsSort];
+    const sortCars = [...values];
     if(!event.target.value){
-      return dispatch(setCarsSort(getCars.values));
+      return dispatch(setCarsSortSuccess(getCars.values));
     }
         switch (title) {
           case "optionPrice":
@@ -23,34 +23,34 @@ export default function SelectGlobal({fields , title,setOptionsSort}) {
               (sortCars[0]?sortCars:getCars.values).sort(function (a, b) {
                   return a.unitPrice - b.unitPrice;
               });
-              dispatch(setCarsSort(sortCars));
+              dispatch(setCarsSortSuccess(sortCars));
             }else{
               (sortCars[0]?sortCars:getCars.values).sort(function (a, b) {
                 return b.unitPrice - a.unitPrice;
               });
-              dispatch(setCarsSort(sortCars));
+              dispatch(setCarsSortSuccess(sortCars));
             }
           break;
           case "genre":
-            const carOptionGenre = getCars.values.filter(
+            const carOptionGenre = (sortCars[0]?sortCars:getCars.values).filter(
               car => 
               car.genre.label === event.target.value
             )
-            dispatch(setCarsSort(carOptionGenre));
+            dispatch(setCarsSortSuccess(carOptionGenre));
           break;
           case "seats":
-            const carOptionSeats = getCars.values.filter(
+            const carOptionSeats = (sortCars[0]?sortCars:getCars.values).filter(
               car => 
               car.seats === event.target.value
             )
-            dispatch(setCarsSort(carOptionSeats));
+            dispatch(setCarsSortSuccess(carOptionSeats));
             break;
           case "fuel":
-            const carOptionFuel = getCars.values.filter(
+            const carOptionFuel = (sortCars[0]?sortCars:getCars.values).filter(
               car => 
               car.fuel === event.target.value
             )
-            dispatch(setCarsSort(carOptionFuel));
+            dispatch(setCarsSortSuccess(carOptionFuel));
             break;
           default:
             break;
@@ -67,9 +67,6 @@ export default function SelectGlobal({fields , title,setOptionsSort}) {
         name={title} 
         onChange={handleChange}
       >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
         {fields.map((item , index)=>{
           return (
             <MenuItem 

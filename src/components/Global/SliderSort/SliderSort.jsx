@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { carSelector, setCarsSort } from '../../../redux';
+import { carSelector, carsSortSelector, setCarsSortSuccess } from '../../../redux';
 import { useDispatch, useSelector } from 'react-redux';
 
 function valuetext(value) {
@@ -15,6 +15,7 @@ export default function SliderSort({maxValue , title}) {
     setValue(newValue);
   };
   const {getCars} = useSelector(carSelector);
+  const {values} = useSelector(carsSortSelector);
   React.useEffect(()=>{
     setValue([0 , maxValue]);
   },[maxValue])
@@ -26,13 +27,13 @@ export default function SliderSort({maxValue , title}) {
         to,
     }
     if(title === 'unitPrice'){
-        const carOptionPrice = getCars.values.filter(
+        const carOptionPrice =getCars.values.filter(
             car => 
             car.unitPrice >= isObj.from 
             && 
             car.unitPrice <= isObj.to 
         )
-        dispatch(setCarsSort(carOptionPrice));
+        dispatch(setCarsSortSuccess(carOptionPrice));
     }
   }
 

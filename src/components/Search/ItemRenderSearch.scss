@@ -11,6 +11,22 @@
         .wrap__carCard{
             background-color: #FFFFFF;
             padding: 10px;
+            position: relative;
+            .car__seats{
+                font-size: 12px;
+                margin-left: 4px;
+            }
+            .car__available{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                padding: 0 20px;
+                border-radius: 5px;
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+                background-color: var(--background-btn-primary);
+                color: #FFFFFF;
+            }
             .wrap__img{
                 cursor: pointer;
                 overflow: hidden;

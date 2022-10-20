@@ -11,7 +11,7 @@
                 .layout__top-item{
                     display: flex;
                     align-items: center;
-                    > label {
+                    > button ,> label {
                         color: var(--txt-primary-color);
                     }
                     position: relative;
@@ -46,6 +46,19 @@
                     background-color: #FFFFFF;
                     height: 100%;
                     padding-top: 15px;
+                    .all__car{
+                        margin-top: 20px;
+                        > button{
+                            padding: 10px 35px;
+                            box-shadow: 1px 1px 0 1px rgba(204, 200, 200, 0.5);
+                            margin-left: 10px;
+                            background-color: var(--txt-primary-color);
+                            color: #FFFFFF;
+                            &:hover{
+                                background-color: #047f40 ;
+                            }
+                        }
+                    }
                     .sort__slider{
                         margin-top: 20px;
                         .MuiSlider-rail,.MuiSlider-track{
