@@ -115,7 +115,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
     if (checkAddProduct) {
       values.image = image;
     } else {
-      values.image = image[0].data_url;
+      // values.image = image[0].data_url;
     }
     console.log("submit", values);
     if (

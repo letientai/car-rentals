@@ -66,5 +66,6 @@ export const SET_AGE_USER = "set_age_user";
 
 export const GET_RENTED_CARS = "set_rented_cars";
 export const GET_ITEM_RENTED_CARS = "set_item_rented_cars";
+export const UPDATE_ITEM_RENTED_CARS_SUCCESS = "update_item_rented_cars_success";
 
 
