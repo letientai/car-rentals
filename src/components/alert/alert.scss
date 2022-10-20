@@ -1,0 +1,19 @@
+.alert-request {
+  position: fixed;
+  z-index: 10;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bold !important;
+  color: rgb(51, 51, 51) !important;
+  animation: UpToDown ease-in-out 1000ms;
+}
+@keyframes UpToDown {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -49,7 +49,11 @@ const RegisterConponent = () => {
     }),
     onSubmit: (userRegister) => {
       const { passwordConfirm, ...userFormat } = userRegister;
-      authRequest.registerUser(userFormat, dispatch, navigate);
+      if (!currentUser?.isAdmin) {
+        authRequest.registerUser(userFormat, dispatch, navigate);
+      } else {
+        authRequest.AdminregisterUser(userFormat, dispatch, navigate);
+      }
     },
   });
   const handelBlurInput = (field) => {
@@ -132,7 +136,7 @@ const RegisterConponent = () => {
         </div>
         <div>
           <Button className="btn__register" type="submit">
-          {!currentUser?.isAdmin ? "Đăng ký" : "Tạo tài khoản"}  
+            {!currentUser?.isAdmin ? "Đăng ký" : "Tạo tài khoản"}
           </Button>
           {!currentUser?.isAdmin && (
             <div className="anothe__register">

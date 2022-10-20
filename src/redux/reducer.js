@@ -35,20 +35,47 @@ import {
   SET_LOADING_DELETE_GENRE,
   SET_CARS_SORT_START,
   SET_CARS_SORT_SUCCESS,
+  SET_DISPLAY_ALERT,
+  SET_ITEM_PROP_ALERT,
+  SET_DATE_BOOKING,
+  SET_DATE_RETURN,
+  SET_ITEM_CAR_START,
+  SET_ITEM_CAR_SUCCESS,
+  SET_ITEM_CAR_FAILED,
+  SET_TOTAL_RENTAL_DAYS,
+  SET_RENTAL_INFOMATION,
 } from "./constants";
 
 const initialState = {
   toastMessage: {
-    display : false,
-    title : "",
-    mess : "",
+    display: false,
+    title: "",
+    mess: "",
   },
-  isLoadingGlobal : false,
+  isLoadingGlobal: false,
   overlay: {
     displayOverlay: false,
     itemPropOverlay: <></>,
   },
+  alert: {
+    displayAlert: false,
+    itemPropAlert: <></>,
+  },
+
+  dateTime: {
+    dateBooking: null,
+    dateReturn: null,
+    totalRentalDays: 0,
+  },
+
   car: {
+    getItemCar: {
+      isLoading: false,
+      error: null,
+      success: false,
+      value: null,
+    },
+
     getCars: {
       isLoading: false,
       values: [],
@@ -116,6 +143,10 @@ const initialState = {
       values: null,
     },
   },
+
+  rentalInfomation: {
+    values: null,
+  },
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -174,7 +205,7 @@ const rootReducer = (state = initialState, action) => {
           ...state.register,
           isLoading: false,
           currentUser: true,
-          success: true
+          success: true,
         },
       };
     case SET_REGISTER_FAILED:
@@ -430,13 +461,13 @@ const rootReducer = (state = initialState, action) => {
     case SET_TOAST_MESSAGE:
       return {
         ...state,
-        toastMessage : action.payload,
-      }
+        toastMessage: action.payload,
+      };
     case SET_LOADING_GLOBAL:
       return {
         ...state,
-        isLoadingGlobal : action.payload,
-      }
+        isLoadingGlobal: action.payload,
+      };
 
     case SET_ADD_GENRE:
       return {
@@ -481,6 +512,94 @@ const rootReducer = (state = initialState, action) => {
             ...state.genre.deleteGenre,
             isLoading: action.payload,
           },
+        },
+      };
+
+    case SET_DISPLAY_ALERT:
+      return {
+        ...state,
+        alert: {
+          ...state.alert,
+          displayAlert: action.payload,
+        },
+      };
+    case SET_ITEM_PROP_ALERT:
+      return {
+        ...state,
+        alert: {
+          ...state.alert,
+          itemPropAlert: action.payload,
+        },
+      };
+
+    case SET_DATE_BOOKING:
+      return {
+        ...state,
+        dateTime: {
+          ...state.dateTime,
+          dateBooking: action.payload,
+        },
+      };
+    case SET_DATE_RETURN:
+      return {
+        ...state,
+        dateTime: {
+          ...state.dateTime,
+          dateReturn: action.payload,
+        },
+      };
+
+    case SET_ITEM_CAR_START:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          getItemCar: {
+            ...state.getItemCar,
+            isLoading: true,
+          },
+        },
+      };
+    case SET_ITEM_CAR_SUCCESS:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          getItemCar: {
+            ...state.getItemCar,
+            isLoading: false,
+            values: action.payload,
+            success: true,
+          },
+        },
+      };
+    case SET_ITEM_CAR_FAILED:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          getItemCar: {
+            ...state.getItemCar,
+            isLoading: false,
+            error: true,
+          },
+        },
+      };
+    case SET_TOTAL_RENTAL_DAYS:
+      return {
+        ...state,
+        dateTime: {
+          ...state.dateTime,
+          totalRentalDays: action.payload,
+        },
+      };
+
+    case SET_RENTAL_INFOMATION:
+      return {
+        ...state,
+        rentalInfomation: {
+          ...state.rentalInfomation,
+          values: action.payload,
         },
       };
 

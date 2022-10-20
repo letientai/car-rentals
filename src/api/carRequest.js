@@ -7,7 +7,11 @@ import {
   setGenreStart,
   setGenreSuccess,
   setItemCar,
+  setItemCarFailed,
+  setItemCarStart,
+  setItemCarSuccess,
   setLoadingGetCar,
+  setLoadingGlobal,
 } from "../redux";
 
 const carRequest = {
@@ -19,6 +23,21 @@ const carRequest = {
       dispatch(setLoadingGetCar(false));
     } catch (error) {
       console.log(error);
+    }
+  },
+
+  getItemCar: async (id, dispatch) => {
+    dispatch(setItemCarStart());
+    dispatch(setLoadingGlobal(true));
+    try {
+      const res = await axios.get(`http://api-rental-carl.herokuapp.com/car/${id}`);
+      dispatch(setItemCarSuccess(res.data));
+      dispatch(setLoadingGlobal(false));
+    } catch (error) {
+      console.log(error);
+      dispatch(setItemCarFailed());
+      dispatch(setLoadingGlobal(false));
+
     }
   },
   deleteCar: async (id, dispatch) => {
