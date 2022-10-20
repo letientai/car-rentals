@@ -7,6 +7,7 @@ import {
   setDisplayAlert,
   setItemPropAlert,
   setLoadingGlobal,
+  setLoginSuccess,
   updateItemRentedCarSuccess,
 } from "../redux";
 
@@ -24,8 +25,12 @@ const rentalRequest = {
             headers: { token: AuthStr },
           }
         )
-        .then((response) => {
+        .then( (response) => {
           console.log(response);
+          // const {accessToken} = JSON.parse(localStorage.getItem("currentUser"));
+          // localStorage.removeItem('currentUser');
+          // localStorage.setItem("currentUser", JSON.stringify({...response.data.user_id,accessToken}));
+          // dispatch(setLoginSuccess(response.data.user_id));
           dispatch(setLoadingGlobal(false));
           dispatch(setItemPropAlert("Thuê xe thành công"));
           dispatch(setDisplayAlert(true));

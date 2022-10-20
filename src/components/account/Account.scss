@@ -8,7 +8,8 @@
         background-image: url(https://www.mioto.vn/static/media/car-9.4970ef2e.jpg);
     }
     .account__user{
-        height: 400px;
+        // height: 400px;
+        padding-bottom: 100px;
         .account__user--item{
             display: flex;
             .account__img{
@@ -118,6 +119,26 @@
                         top: 50%;
                         margin-left: 60px;
                         font-weight: 600;
+                    }
+                }
+            }
+        }
+        .account__history{
+            display: flex;
+            flex-direction: column;
+            .account__history__title{
+                font-size: 20px;
+                margin-top: 10px;
+            }
+            .account__history--emty{
+                display: flex;
+                padding: 50px 0;
+                background-color: #FFFFFF;
+                > p{
+                    margin: auto;
+                    > span{
+                        font-weight: 600;
+                        cursor: pointer;
                     }
                 }
             }
