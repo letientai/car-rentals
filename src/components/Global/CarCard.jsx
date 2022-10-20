@@ -45,6 +45,8 @@ const CarCard = ({ itemCar, responsive }) => {
           <EditLocationIcon />
           Đà Nẵng
         </p>
+        <span className="car__available" >{itemCar.available?"Có sẵn":"Đã được thuê"}</span>
+        <p className="car__seats" >Số ghế : {itemCar.seats}</p>
       </div>
     </Grid>
   );

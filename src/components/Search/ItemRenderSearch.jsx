@@ -1,18 +1,16 @@
 import { Grid } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { carSelector, carsSortSelector, setCarsSort } from '../../redux';
+import { carSelector, carsSortSelector, setCarsSortSuccess } from '../../redux';
 import CarCard from '../Global/CarCard';
 import "./ItemRenderSearch.scss"
 
 
 const ItemRenderSearch = () => {
-    const dispatch = useDispatch();
-    const {getCars} = useSelector(carSelector);
-    const carsSort = useSelector(carsSortSelector);
-    useEffect(() =>{
-        dispatch(setCarsSort(getCars.values));
-    },[getCars.values])
+    // const dispatch = useDispatch();
+    // const {getCars} = useSelector(carSelector);
+    const {isLoading, values} = useSelector(carsSortSelector);
+    
     const responsive = {
         sm : 12,
         md : 6,
@@ -20,17 +18,18 @@ const ItemRenderSearch = () => {
     }
   return (
     <div className='item__render--search' >
-        {getCars.isLoading?
+        {isLoading?
             <div>Loading</div>:
             <Grid className='item__render--scroll' container >
-                {(carsSort && !carsSort[0])?
-                <div>
-                    có cái nịt
-                </div>:carsSort?.map((item , index)=>{
-                    return (
-                        <CarCard responsive={responsive} key={index} itemCar={item} />
-                    )
-                })}
+                {values[0]?
+                    values?.map((item , index)=>{
+                        return (
+                            <CarCard responsive={responsive} key={index} itemCar={item} />
+                        )
+                    })
+                    :
+                    <div>Không tìm thấy sản phẩm nào</div>
+                }
             </Grid>
         }
     </div>
