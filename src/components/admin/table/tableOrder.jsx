@@ -9,17 +9,18 @@ import Paper from "@mui/material/Paper";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useDispatch, useSelector } from "react-redux";
-import { rentedCarsSelector, setOpenDetailOrder } from "../../../redux";
+import { rentedCarsSelector, setOpenDetailOrder, updateItemRentedCarCarsSelector } from "../../../redux";
 import rentalRequest from "../../../api/rentalRequest";
 export const TableOrder = () => {
   const dispatch = useDispatch();
   const listRentedCars = useSelector(rentedCarsSelector);
+  const updateItemRentedCar = useSelector(updateItemRentedCarCarsSelector);
   const openDetailOrder = (item) => {
     dispatch(setOpenDetailOrder(item));
   };
   useEffect(() => {
     rentalRequest.getCarRental(dispatch);
-  }, []);
+  }, [updateItemRentedCar.success]);
   return (
     <div className="tableOrder">
       <TableContainer component={Paper}>

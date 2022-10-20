@@ -46,6 +46,7 @@ import {
   SET_AGE_USER,
   GET_RENTED_CARS,
   GET_ITEM_RENTED_CARS,
+  UPDATE_ITEM_RENTED_CARS_SUCCESS,
 } from "./constants";
 
 const initialState = {
@@ -150,6 +151,10 @@ const initialState = {
 
   itemRentedCars: {
     values: null,
+  },
+
+  updateItemRentedCar:{
+    success: null,
   },
 
   sendIdDetail: {
@@ -642,6 +647,14 @@ const rootReducer = (state = initialState, action) => {
           ...state.itemRentedCars,
           values: action.payload,
           // list: [ ...state.itemRentedCars.list, action.payload]
+        },
+      };
+    case UPDATE_ITEM_RENTED_CARS_SUCCESS:
+      const aa = state.updateItemRentedCar.success
+      return {
+        ...state,
+        updateItemRentedCar: {
+          success: !aa,
         },
       };
 
