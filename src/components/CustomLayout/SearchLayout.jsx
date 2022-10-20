@@ -3,47 +3,132 @@ import React from "react";
 import Navbar from "../Layout/Navbar/Navbar";
 import "./LayoutCustom.scss";
 import SelectGlobal from "../Global/Select/Select";
-import {useSelector } from "react-redux";
-import { genreSelector} from "../../redux";
+import {useDispatch, useSelector } from "react-redux";
+import { carSelector, carsSortSelector, genreSelector, setCarsSortSuccess} from "../../redux";
 import SliderSort from "../Global/SliderSort/SliderSort";
 import { useEffect } from "react";
-import DateTime from "../Global/DateTimePicker/Datime";
+import SearchIcon from '@mui/icons-material/Search';
+import { Button } from "../../assets/css/globalStyles";
+import searchRequest from "../../api/searchRequest";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 
 
 
-const SearchLayout = ({ children , cars}) => {
+const SearchLayout = ({ children }) => {
   const { getGenres } = useSelector(genreSelector);
-  const sortGenres = [];
-  const sortFuel = [];
-  const sortCarsSeat = [];
+  const {getCars} = useSelector(carSelector);
+  const {values} = useSelector(carsSortSelector);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [sortGenres,setSortGenres] = useState([]);
+  const [sortCarsSeat,setSortCarsSeat] = useState([]);
+  const [sortFuel,setSortFuel] = useState([]);
   const sortPrice = ["Ưu tiên giá thấp", "Ưu tiên giá cao"];
-  let maxValue = 0;
-  cars?.forEach((car)=>{
-    if(car.unitPrice >= maxValue){
-        maxValue = car.unitPrice
-    }
-  });
-  const fetchDatasSortOptions = () => {
-    getGenres?.values?.forEach((element) => {
-      sortGenres.push(element.label);
-    });
-    cars?.forEach((element) => {
-      if (!sortCarsSeat.includes(element.seats)) {
-        sortCarsSeat.push(element.seats);
-      }
-    });
-    cars?.forEach((element) => {
-      if (!sortFuel.includes(element.fuel)) {
-        sortFuel.push(element.fuel);
-      }
-    });
-  };
-  fetchDatasSortOptions();
+  const [maxValue,setMaxValue] = useState(0);
+  const elementInput = useRef();
+
+
+
   useEffect(() => {
-    fetchDatasSortOptions();// eslint-disable-next-line
-  }, [getGenres.values, cars]);
+    
+    let max = 0;
+    getCars.values?.forEach((car)=>{
+      if(car.unitPrice >= max){
+          max = car.unitPrice
+      }
+    });
+    setMaxValue(max);
+
+
+  },[values,getGenres.values]);
+  useEffect(() => {
+    const fetchInitGenre = ()=>{
+      const genreCar = [];
+      getGenres.values.forEach((element) => {
+        if(!genreCar.includes(element.label)){
+          genreCar.push(element.label);
+        }
+      });
+      setSortGenres(genreCar);
+    }
+    const fetchInitSeats = ()=>{
+      const seatsCar = [];
+      getCars.values.forEach((element) => {
+        if(!seatsCar.includes(element.seats)){
+          seatsCar.push(element.seats);
+        }
+      });
+     setSortCarsSeat(seatsCar);
+    }
+    const fetchInitFuel = ()=>{
+      const fuelCar = [];
+      getCars.values.forEach((element) => {
+        if(!fuelCar.includes(element.fuel)){
+          fuelCar.push(element.fuel);
+        }
+      });
+      setSortFuel(fuelCar);
+    }
+    fetchInitFuel();
+    fetchInitGenre();
+    fetchInitSeats();
+  },[getGenres.values]);
+
+  useEffect(() => {
+    const fetchGenre = () => {
+      const genreCar = [];
+      if(values.length == getCars.values.length) {
+        getGenres.values.forEach((element) => {
+          if(!genreCar.includes(element.label)){
+            genreCar.push(element.label);
+          }
+        });
+      }else{
+        values.forEach((element) => {
+          if(!genreCar.includes(element.genre.label)){
+            genreCar.push(element.genre.label);
+          }
+        })
+      }
+      setSortGenres(genreCar);
+    }
+    const fetchSeats = () => {
+      const seatsCars = [];
+      if(values[0]){
+        values.forEach((element) => {
+          if(!seatsCars.includes(element.seats)){
+            seatsCars.push(element.seats);
+          }
+        })
+        setSortCarsSeat(seatsCars);
+      }
+    }
+    const fetchFuel = () => {
+      const fuelCars = [];
+      if(values[0]){
+        values.forEach((element) => {
+          if(!fuelCars.includes(element.fuel)){
+            fuelCars.push(element.fuel);
+          }
+        })
+        setSortFuel(fuelCars);
+      }
+    }
+    fetchFuel();
+    fetchGenre();
+    fetchSeats();
+  },[values]);
+  const handleSearch = ()=>{
+    searchRequest.searchName(elementInput.current.value,dispatch);
+  }
+  const handleSetAllCars = ()=>{
+    navigate("/search");
+    dispatch(setCarsSortSuccess(getCars.values))
+  }
   return (
     <div className="search__layout">
       <Navbar />
@@ -59,12 +144,15 @@ const SearchLayout = ({ children , cars}) => {
               />
             </li>
             <li className="layout__top-item">
-              <label htmlFor="To">Bắt đầu</label>
-              <DateTime className="form__group__date--time"  />
-            </li>
-            <li className="layout__top-item">
-              <label htmlFor="from">Kết thúc</label>
-              <DateTime className="form__group__date--time"  />
+              <Button onClick={handleSearch}>
+                <SearchIcon/>
+              </Button>
+              <input
+                ref={elementInput}
+                type="text"
+                id="car-search"
+                placeholder="Tìm kiếm bất kỳ xe mà bạn muốn"
+              />
             </li>
           </ul>
         </div>
@@ -82,7 +170,7 @@ const SearchLayout = ({ children , cars}) => {
                 <h6>Mức giá</h6>
                 <SliderSort
                   title="unitPrice"
-                  maxValue={maxValue && maxValue}
+                  maxValue={maxValue}
                 />
               </div>
               <div>
@@ -105,6 +193,9 @@ const SearchLayout = ({ children , cars}) => {
                   fields={sortFuel}
                   title="fuel"
                 />
+              </div>
+              <div className="all__car" >
+                <Button onClick={handleSetAllCars} >Tất cả xe</Button>
               </div>
             </div>
             <div className="search__wrap">{children}</div>

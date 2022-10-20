@@ -23,7 +23,6 @@ import {
   SET_USER_FAILED,
   SET_USER_START,
   SET_USER_SUCCESS,
-  SET_CARS_SORT,
   SET_ITEM_GENRE,
   // SET_ITEM_PROP_OVERLAY,
   // SET_LOADING_GET_CAR,
@@ -34,6 +33,8 @@ import {
   SET_LOADING_ADD_GENRE,
   SET_DELETE_GENRE,
   SET_LOADING_DELETE_GENRE,
+  SET_CARS_SORT_START,
+  SET_CARS_SORT_SUCCESS,
   SET_DISPLAY_ALERT,
   SET_ITEM_PROP_ALERT,
   SET_DATE_BOOKING,
@@ -77,7 +78,7 @@ const initialState = {
 
     getCars: {
       isLoading: false,
-      values: null,
+      values: [],
     },
     deleteCar: {
       isLoading: false,
@@ -93,7 +94,10 @@ const initialState = {
     values: [],
   },
 
-  carsSort: [],
+  carsSort: {
+    isLoading: false,
+    values: [],
+  },
   genre: {
     getGenres: {
       isLoading: false,
@@ -415,10 +419,21 @@ const rootReducer = (state = initialState, action) => {
         },
       };
 
-    case SET_CARS_SORT:
+    case SET_CARS_SORT_START:
       return {
         ...state,
-        carsSort: action.payload,
+        carsSort: {
+          ...state.carsSort,
+          isLoading: action.payload
+        },
+      };
+    case SET_CARS_SORT_SUCCESS:
+      return {
+        ...state,
+        carsSort: {
+          ...state.carsSort,
+          values: action.payload
+        },
       };
 
     case SET_LOADING_GET_GENRE:

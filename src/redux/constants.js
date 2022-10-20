@@ -8,7 +8,9 @@ export const SET_LOADING_GLOBAL = 'set_loading_global';
 
 export const SET_ITEM_CAR = 'set_item_car';
 export const SET_LOADING_GET_CAR = 'set_loading_get_car';
-export const SET_CARS_SORT  = 'set_cars_sort';
+
+export const SET_CARS_SORT_START = 'set_cars_sort_start';
+export const SET_CARS_SORT_SUCCESS= 'set_cars_sort_success';
 
 export const SET_REGISTER_START = 'set_register_start';
 export const SET_REGISTER_SUCCESS = 'set_register_success';
