@@ -11,7 +11,7 @@ const axios = require("axios").default;
 
 export const TableRentalHistory = ({ listRentedCars }) => {
   const [list, setList] = useState([]);
-
+  console.log("concac",listRentedCars);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">

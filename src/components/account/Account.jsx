@@ -6,17 +6,21 @@ import "./Account.scss";
 import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  carSelector,
   loginSelector,
+  setCarsSortSuccess,
   setDisplayOverlay,
   setItemPropOverlay,
 } from "../../redux";
 import CustomForm from "../Global/CustomForm/CustomForm";
+import { TableRentalHistory } from "../admin/table/tableRentalHistory";
+import { useNavigate } from "react-router-dom";
 const Account = () => {
+  const navigate = useNavigate();
   const { currentUser } = useSelector(loginSelector);
   const storageUser = JSON.parse(localStorage.getItem("currentUser"));
   const dispatch = useDispatch();
-  console.log(currentUser, "1");
-  console.log(storageUser, "2");
+  const {getCars} = useSelector(carSelector);
   const handleUpdateEmail = () => {
     dispatch(setDisplayOverlay(true));
     dispatch(
@@ -104,6 +108,19 @@ const Account = () => {
             <h5 className="info__title">Facebook</h5>
             <AddLinkOutlinedIcon className="info__link" />
           </Grid>
+        </Grid>
+        <Grid className="account__history" container >
+          <h3 className="account__history__title" >Lịch sử xe thuê</h3>
+          {
+            (currentUser?.rentedCars[0] || storageUser?.rentedCars[0])?
+            <TableRentalHistory listRentedCars={currentUser?.rentedCars || storageUser?.rentedCars} />:
+            <div className="account__history--emty" >
+              <p>Bạn chưa có chuyến thuê nào!<span onClick={()=>{
+                navigate("/search");
+                dispatch(setCarsSortSuccess(getCars.values));
+              }} >Thuê ngay</span> để đuợc trải nghiệm dịch vụ tốt nhất từ MIOTO</p>
+            </div>
+          }
         </Grid>
       </Container>
     </div>
