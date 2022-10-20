@@ -15,3 +15,4 @@ export const rentalInfomationSelector= (value) => value.rentalInfomation;
 export const rentedCarsSelector= (value) => value.rentedCars;
 export const itemRentedCarsSelector= (value) => value.itemRentedCars;
 export const listItemRentedCarsSelector= (value) => value.listItemRentedCars;
+export const updateItemRentedCarCarsSelector= (value) => value.updateItemRentedCar;

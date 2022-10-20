@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -30,16 +30,16 @@ export const TableRentalHistory = ({ listRentedCars }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-     
-          {listRentedCars?.map((item, index) => (
-            <TableRowHistory
-              id={item}
-              key={index}
-              list={list}
-              setList={setList}
-              index={index}
-            />
-          ))}
+          {listRentedCars.length > 0 &&
+            listRentedCars?.map((item, index) => (
+              <TableRowHistory
+                id={item}
+                key={index}
+                list={list}
+                setList={setList}
+                index={index}
+              />
+            ))}
         </TableBody>
       </Table>
     </TableContainer>

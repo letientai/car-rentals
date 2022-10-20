@@ -3,25 +3,52 @@ import "./formDetailOrder.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { sendIdDetailSelector, setCloseDetailOrder } from "../../../redux";
 import dateFormat from "dateformat";
+import rentalRequest from "../../../api/rentalRequest";
 
 export const FormDetailOrder = (prop) => {
   const [orderStatus, setOrderStatus] = useState(1);
+  const [plight, setPlight] = useState(1);
   const dispatch = useDispatch();
   const { openForm } = useSelector(sendIdDetailSelector);
   const data = openForm.values;
 
-  useEffect(()=>{
-    if(data?.plight === "Vừa đặt"){
-      setOrderStatus(4)
+  useEffect(() => {
+    console.log(data?.plight);
+    if (data?.plight === "Vừa đặt") {
+      setOrderStatus(1);
     }
-  },[])
+    if (data?.plight === "Đang thuê") {
+      setOrderStatus(2);
+    }
+    if (data?.plight === "Đã thuê") {
+      setOrderStatus(3);
+    }
+    if (data?.plight === "Đã hủy") {
+      setOrderStatus(4);
+    }
+  }, []);
+
   const handleSelectChange = (e) => {
     const order = parseInt(e.target.value);
     console.log(order);
+    if (order === 1) {
+      setPlight("Vừa đặt");
+    } else if (order === 2) {
+      setPlight("Đang thuê");
+    } else if (order === 3) {
+      setPlight("Đã thuê");
+    } else {
+      setPlight("Đã hủy");
+    }
     setOrderStatus(order);
   };
+
   const closeForm = () => {
     dispatch(setCloseDetailOrder());
+  };
+
+  const update = () => {
+    rentalRequest.updateItemCarRental(data?._id, dispatch, plight);
   };
   return (
     <div className="formDetail-container">
@@ -83,12 +110,14 @@ export const FormDetailOrder = (prop) => {
               <option value="1">Vừa đặt</option>
               <option value="2">Đang thuê</option>
               <option value="3">Đã thuê</option>
-              <option value="4">Hủy</option>
+              <option value="4">Đã hủy</option>
             </select>
           </div>
           <div className="row-btn">
             <div className="groupBtn">
-              <button className="btn btn-update">Cập nhật</button>
+              <button className="btn btn-update" onClick={update}>
+                Cập nhật
+              </button>
               <button className="btn btn-cancel" onClick={closeForm}>
                 Hủy
               </button>

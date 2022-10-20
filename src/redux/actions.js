@@ -49,7 +49,8 @@ import {
   SET_AGE_USER,
   GET_RENTED_CARS,
   GET_ITEM_RENTED_CARS,
-  PUSH_ITEM_RENTED_CARS, 
+  PUSH_ITEM_RENTED_CARS,
+  UPDATE_ITEM_RENTED_CARS_SUCCESS, 
 } from "./constants";
 
 export const setDisplayOverlay = (payload) => ({
@@ -263,5 +264,10 @@ export const getRentedCar= (payload) => ({
 });
 export const getItemRentedCar= (payload) => ({
   type: GET_ITEM_RENTED_CARS,
+  payload: payload,
+});
+
+export const updateItemRentedCarSuccess= (payload) => ({
+  type: UPDATE_ITEM_RENTED_CARS_SUCCESS,
   payload: payload,
 });

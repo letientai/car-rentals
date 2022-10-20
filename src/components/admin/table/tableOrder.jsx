@@ -6,20 +6,26 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import dateFormat from "dateformat";
+
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useDispatch, useSelector } from "react-redux";
-import { rentedCarsSelector, setOpenDetailOrder } from "../../../redux";
+import {
+  rentedCarsSelector,
+  setOpenDetailOrder,
+  updateItemRentedCarCarsSelector,
+} from "../../../redux";
 import rentalRequest from "../../../api/rentalRequest";
 export const TableOrder = () => {
   const dispatch = useDispatch();
   const listRentedCars = useSelector(rentedCarsSelector);
+  const updateItemRentedCar = useSelector(updateItemRentedCarCarsSelector);
   const openDetailOrder = (item) => {
     dispatch(setOpenDetailOrder(item));
   };
   useEffect(() => {
     rentalRequest.getCarRental(dispatch);
-  }, []);
+  }, [updateItemRentedCar.success]);
   return (
     <div className="tableOrder">
       <TableContainer component={Paper}>
@@ -30,9 +36,9 @@ export const TableOrder = () => {
               <TableCell>Mã đơn thuê</TableCell>
               <TableCell align="left">Tên người thuê</TableCell>
               <TableCell align="left">Số điện thoại</TableCell>
-              <TableCell align="left">Địa chỉ</TableCell>
+              <TableCell align="left">Tên xe</TableCell>
               <TableCell align="left">Trạng thái </TableCell>
-              <TableCell align="left">Hành động</TableCell>
+              <TableCell align="left">Ngày tạo</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -48,19 +54,11 @@ export const TableOrder = () => {
                 <TableCell align="left">
                   {item?.user_id?.lastName + " " + item?.user_id?.firstName}
                 </TableCell>
-                <TableCell align="left">{item.phone}</TableCell>
+                <TableCell align="left">{item?.phone}</TableCell>
                 <TableCell align="left">{item?.car_id?.name}</TableCell>
                 <TableCell align="left">{item?.plight}</TableCell>
-                <TableCell align="left" className="action">
-                  {/* <div className="icon-action">
-                    <HighlightOffIcon />
-                  </div> */}
-                  <div
-                    className="icon-action"
-                    //   onClick={(e) => showInfOrder(item)}
-                  >
-                    <RemoveRedEyeIcon />
-                  </div>
+                <TableCell align="left">
+                  {dateFormat(item?.createdAt, "dd/mm/yyyy")}
                 </TableCell>
               </TableRow>
             ))}
