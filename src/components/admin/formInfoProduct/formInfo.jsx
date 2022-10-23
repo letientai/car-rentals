@@ -112,10 +112,11 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
     values.genre = chooseGenre;
     values.available = Availables;
     values.description = description;
-    if (checkAddProduct) {
-      values.image = image;
+    if (!checkAddProduct) {
+      // values.image = image;
     } else {
-      // values.image = image[0].data_url;
+      values.image = image[0].data_url;
+      console.log(image);
     }
     console.log("submit", values);
     if (
