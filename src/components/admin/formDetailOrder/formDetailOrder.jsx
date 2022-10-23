@@ -16,15 +16,19 @@ export const FormDetailOrder = (prop) => {
     console.log(data?.plight);
     if (data?.plight === "Vừa đặt") {
       setOrderStatus(1);
+      setPlight("Vừa đặt");
     }
     if (data?.plight === "Đang thuê") {
       setOrderStatus(2);
+      setPlight("Đang thuê");
     }
     if (data?.plight === "Đã thuê") {
       setOrderStatus(3);
+      setPlight("Đã thuê");
     }
     if (data?.plight === "Đã hủy") {
       setOrderStatus(4);
+      setPlight("Đã hủy");
     }
   }, []);
 

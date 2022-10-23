@@ -39,7 +39,7 @@ const CarCard = ({ itemCar, responsive }) => {
           </div>
         </div>
         <h5 className="item__card_name">{itemCar.name}</h5>
-        <p>2 chuyến</p>
+        {/* <p>2 chuyến</p> */}
         <p className="item__card_fuel">{itemCar.fuel}</p>
         <p className="item__card_address">
           <EditLocationIcon />
