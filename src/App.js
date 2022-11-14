@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useMemo } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Routes , Route} from 'react-router-dom';
 import carRequest from './api/carRequest';
@@ -16,12 +16,10 @@ const App = () => {
   const alert = useSelector(alertSelector);
 
   const {getCars} = useSelector(carSelector);
-  // useEffect(()=>{
-    useMemo(()=>{
+  useEffect(()=>{
       carRequest.getCarsApi(dispatch);
       genreRequest.getGenresApi(dispatch);
-    },[]);
-  // },[]);
+  },[]);
   return (
     <div >
       <Routes>
@@ -53,4 +51,4 @@ const App = () => {
   )
 }
 
-export default React.memo(App);
+export default App;
