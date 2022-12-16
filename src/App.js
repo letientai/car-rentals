@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useMemo } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Routes , Route} from 'react-router-dom';
 import carRequest from './api/carRequest';
 import genreRequest from './api/genreRequest';
 import { AlertMessage } from './components/alert/alert';
+import NotFound from './components/auth/NotFound/NotFound';
 import DefaultLayout from './components/CustomLayout/DefaultLayout';
 import SimpleBackdrop from './components/Global/BackDrop/BackDrop';
 import BasicAlert from './components/Global/BasicAlert/BasicAlert';
@@ -14,14 +15,12 @@ const App = () => {
   const dispatch = useDispatch();
   const overlay = useSelector(overlaySelector);
   const alert = useSelector(alertSelector);
-
+  const {isAdmin} = JSON.parse(localStorage.getItem("currentUser")) || false;
   const {getCars} = useSelector(carSelector);
-  // useEffect(()=>{
-    useMemo(()=>{
+  useEffect(()=>{
       carRequest.getCarsApi(dispatch);
       genreRequest.getGenresApi(dispatch);
-    },[]);
-  // },[]);
+  },[]);
   return (
     <div >
       <Routes>
@@ -32,7 +31,11 @@ const App = () => {
           }else if(route.Layout === null){
             Layout = Fragment;
           }
-          const Page = route.component;
+          let Page = route.component;
+          if(route.role === "admin" && !isAdmin){
+            Page = ()=> <NotFound/>;
+            Layout = DefaultLayout;
+          }
           return (
             <Route
               path={route.path}
@@ -53,4 +56,4 @@ const App = () => {
   )
 }
 
-export default React.memo(App);
+export default App;

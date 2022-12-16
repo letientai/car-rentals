@@ -10,7 +10,7 @@ import {
   setLoginSuccess,
   updateItemRentedCarSuccess,
 } from "../redux";
-
+const url = process.env.REACT_APP_URL_LOCAL;
 const rentalRequest = {
   carRental: async (dispatch, info) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -19,7 +19,7 @@ const rentalRequest = {
     try {
       axios
         .post(
-          "http://api-rental-carl.herokuapp.com/rentedCarInfo/create",
+          `${url}/rentedCarInfo/create`,
           info,
           {
             headers: { token: AuthStr },
@@ -53,7 +53,7 @@ const rentalRequest = {
     dispatch(setLoadingGlobal(true));
     try {
       axios
-        .get("http://api-rental-carl.herokuapp.com/rentedCarInfo", {
+        .get(`${url}/rentedCarInfo`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
@@ -78,7 +78,7 @@ const rentalRequest = {
     console.log(id);
     try {
       axios
-        .get(`http://api-rental-carl.herokuapp.com/rentedCarInfo/${id}`, {
+        .get(`${url}/rentedCarInfo/${id}`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
@@ -107,7 +107,7 @@ const rentalRequest = {
     try {
       axios
         .patch(
-          `http://api-rental-carl.herokuapp.com/rentedCarInfo/${id}/edit`,
+          `${url}/rentedCarInfo/${id}/edit`,
           {
             plight: available,
           },

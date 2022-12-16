@@ -21,7 +21,7 @@ const routes = () => {
     { path: "/", component: Home },
     { path: "register", component: Register },
 
-    { path: "admin", component: Overview, Layout: LayoutAdmin },
+    { path: "admin", component: Overview, Layout: LayoutAdmin ,role : "admin" },
     { path: "user-management", component: UserManagement, Layout: LayoutAdmin },
     {
       path: "order-management",

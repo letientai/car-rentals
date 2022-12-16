@@ -8,6 +8,7 @@ import {
   setUserSuccess,
 } from "../redux";
 
+const url = process.env.REACT_APP_URL_LOCAL;
 const userRequest = {
   getUserApi: async (dispatch) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -15,7 +16,7 @@ const userRequest = {
     dispatch(setUserStart(dispatch));
     try {
       axios
-        .get("http://api-rental-carl.herokuapp.com/user", {
+        .get(`${url}/user`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
@@ -37,7 +38,7 @@ const userRequest = {
     dispatch(setItemUserStart(dispatch));
     try {
       axios
-        .get(`http://api-rental-carl.herokuapp.com/user/${id}`, {
+        .get(`${url}/user/${id}`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
