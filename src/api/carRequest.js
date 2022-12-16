@@ -14,11 +14,12 @@ import {
   setLoadingGlobal,
 } from "../redux";
 
+const url = process.env.REACT_APP_URL_LOCAL;
 const carRequest = {
   getCarsApi: async (dispatch) => {
     dispatch(setLoadingGetCar(true));
     try {
-      const res = await axios.get("https://api-rental-carl.herokuapp.com/car");
+      const res = await axios.get(`${url}/car`);
       dispatch(setItemCar(res.data));
       dispatch(setLoadingGetCar(false));
     } catch (error) {
@@ -30,7 +31,7 @@ const carRequest = {
     dispatch(setItemCarStart());
     dispatch(setLoadingGlobal(true));
     try {
-      const res = await axios.get(`http://api-rental-carl.herokuapp.com/car/${id}`);
+      const res = await axios.get(`${url}/car/${id}`);
       dispatch(setItemCarSuccess(res.data));
       dispatch(setLoadingGlobal(false));
     } catch (error) {
@@ -44,7 +45,7 @@ const carRequest = {
     dispatch(setDeleteCarStart(dispatch));
     try {
       const res = await axios.delete(
-        `http://api-rental-carl.herokuapp.com/car/${id}`
+        `${url}/car/${id}`
       );
       dispatch(setDeleteCarSuccess(res));
     } catch (error) {
@@ -56,7 +57,7 @@ const carRequest = {
   getGenre: async (dispatch) => {
     dispatch(setGenreStart(dispatch));
     try {
-      const res = await axios.get(`http://api-rental-carl.herokuapp.com/genre`);
+      const res = await axios.get(`${url}/genre`);
       dispatch(setGenreSuccess(res));
     } catch (error) {
       console.log(error);

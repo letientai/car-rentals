@@ -8,12 +8,13 @@ import {
   setLoadingGetGenre,
 } from "../redux";
 
+const url = process.env.REACT_APP_URL_LOCAL;
 const genreRequest = {
   getGenresApi: async (dispatch) => {
     dispatch(setLoadingGetGenre(true));
     try {
       const res = await axios.get(
-        "https://api-rental-carl.herokuapp.com/genre"
+        `${url}/genre`
       );
       dispatch(setItemGenre(res.data));
       dispatch(setLoadingGetGenre(false));
@@ -26,7 +27,7 @@ const genreRequest = {
     dispatch(setLoadingAddGenre(true));
     try {
       axios
-        .post("http://api-rental-carl.herokuapp.com/genre/create", {
+        .post(`${url}/genre/create`, {
           label: name,
         })
         .then((response) => {
@@ -49,7 +50,7 @@ const genreRequest = {
     const AuthStr = "bearer ".concat(currentUser.accessToken);
     try {
       const res = await axios.delete(
-        `http://api-rental-carl.herokuapp.com/genre/${id}`,
+        `${url}/genre/${id}`,
         {
           headers: { token: AuthStr },
         }

@@ -16,6 +16,7 @@ const Auth = () => {
   const login = useSelector(loginSelector);
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const elementAuthCustom = useRef();
+  const {isAdmin} = JSON.parse(localStorage.getItem("currentUser")) || false;
   const handleLogout = ()=>{
     localStorage.removeItem('currentUser');
     authRequest.logoutUser(currentUser.accessToken , dispatch,navigate);
@@ -23,6 +24,9 @@ const Auth = () => {
   }
   const handleManageAcc = ()=>{
     navigate('/account');
+  }
+  const handleNavigateAdmin = ()=>{
+    navigate('/admin');
   }
   return (
     <div className='auth' >
@@ -45,6 +49,7 @@ const Auth = () => {
             e.stopPropagation();
           }}
           ref={elementAuthCustom} className='auth__user--custom' >
+            {isAdmin && <li onClick={handleNavigateAdmin} >Đến tài khoản admin</li>}
             <li onClick={handleManageAcc} >Quản lý tài khoản</li>
             <li onClick={handleLogout}>Đăng xuất</li>
           </ul>

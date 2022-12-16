@@ -11,12 +11,14 @@ import {
   setToastMessage,
 } from "../redux";
 
+// https://api-rental-carl.herokuapp.com
+const url = process.env.REACT_APP_URL_LOCAL;
 const authRequest = {
   registerUser: async (user, dispatch, navigate) => {
     dispatch(setRegisterStart());
     try {
       const { data } = await axios.post(
-        "https://api-rental-carl.herokuapp.com/auth/register",
+        `${url}/auth/register`,
         user,
       );
       dispatch(setLoginSuccess(data));
@@ -32,7 +34,7 @@ const authRequest = {
     const AuthStr = "bearer ".concat(currentUser.accessToken);
     try {
       const { data } = await axios.post(
-        "https://api-rental-carl.herokuapp.com/auth/admin/register",
+        `${url}/auth/admin/register`,
         user,
         {
           headers: { token: AuthStr },
@@ -52,7 +54,7 @@ const authRequest = {
     }));
     try {
       const currentUser = await axios.post(
-        "https://api-rental-carl.herokuapp.com/auth/login",
+        `${url}/auth/login`,
         user
       );
       dispatch(setLoadingGlobal(false));
@@ -83,7 +85,7 @@ const authRequest = {
     try {
       await axios
         .post(
-          "https://api-rental-carl.herokuapp.com/auth/logout",
+          `${url}/auth/logout`,
           {},
           {
             headers: {
@@ -111,7 +113,7 @@ const authRequest = {
     dispatch(setToastMessage({
       display : false,
     }));
-    axios.patch(`https://api-rental-carl.herokuapp.com/auth/${id}/edit`,
+    axios.patch(`url/auth/${id}/edit`,
     dataUpdate,{headers: {token: `Bearer ${accessToken}`}})
     .then((response)=>{
       dispatch(setLoadingGlobal(false));
