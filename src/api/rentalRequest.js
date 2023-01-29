@@ -18,14 +18,10 @@ const rentalRequest = {
     dispatch(setLoadingGlobal(true));
     try {
       axios
-        .post(
-          `${url}/rentedCarInfo/create`,
-          info,
-          {
-            headers: { token: AuthStr },
-          }
-        )
-        .then( (response) => {
+        .post(`${url}rentedCarInfo/create`, info, {
+          headers: { token: AuthStr },
+        })
+        .then((response) => {
           console.log(response);
           // const {accessToken} = JSON.parse(localStorage.getItem("currentUser"));
           // localStorage.removeItem('currentUser');
@@ -53,7 +49,7 @@ const rentalRequest = {
     dispatch(setLoadingGlobal(true));
     try {
       axios
-        .get(`${url}/rentedCarInfo`, {
+        .get(`${url}rentedCarInfo`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
@@ -78,7 +74,7 @@ const rentalRequest = {
     console.log(id);
     try {
       axios
-        .get(`${url}/rentedCarInfo/${id}`, {
+        .get(`${url}rentedCarInfo/${id}`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
@@ -107,7 +103,7 @@ const rentalRequest = {
     try {
       axios
         .patch(
-          `${url}/rentedCarInfo/${id}/edit`,
+          `${url}rentedCarInfo/${id}/edit`,
           {
             plight: available,
           },
@@ -119,7 +115,7 @@ const rentalRequest = {
           console.log(response);
           dispatch(setLoadingGlobal(false));
           dispatch(setCloseDetailOrder());
-          dispatch(updateItemRentedCarSuccess())
+          dispatch(updateItemRentedCarSuccess());
         })
         .catch((error) => {
           console.log("error " + error);

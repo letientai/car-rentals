@@ -16,7 +16,7 @@ const userRequest = {
     dispatch(setUserStart(dispatch));
     try {
       axios
-        .get(`${url}/user`, {
+        .get(`${url}user`, {
           headers: { token: AuthStr },
         })
         .then((response) => {
@@ -32,13 +32,13 @@ const userRequest = {
       dispatch(setUserFailed(dispatch));
     }
   },
-  getItemUser: async (id ,dispatch) => {
+  getItemUser: async (id, dispatch) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const AuthStr = "bearer ".concat(currentUser.accessToken);
     dispatch(setItemUserStart(dispatch));
     try {
       axios
-        .get(`${url}/user/${id}`, {
+        .get(`${url}user/${id}`, {
           headers: { token: AuthStr },
         })
         .then((response) => {

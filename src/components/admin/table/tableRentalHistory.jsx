@@ -7,11 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TableRowHistory } from "./tableRowHistory";
-const axios = require("axios").default;
 
 export const TableRentalHistory = ({ listRentedCars }) => {
   const [list, setList] = useState([]);
-  console.log("concac",listRentedCars);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">

@@ -46,8 +46,8 @@ export const Sidebar = () => {
     },
   ];
 
-  const moveToOverview = () => {
-    navigate("/admin");
+  const moveToHome = () => {
+    navigate("/");
   };
 
   const moveToItem = (item) => {
@@ -75,7 +75,7 @@ export const Sidebar = () => {
     <div className="sidebar__container ">
       <div className="sidebar__logo">
         {/* <img src={logo} alt="" /> */}
-        <p onClick={moveToOverview}>
+        <p onClick={moveToHome}>
           M<span>I</span>OTO
         </p>
       </div>
