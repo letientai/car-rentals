@@ -54,7 +54,7 @@ const carRequest = {
   getGenre: async (dispatch) => {
     dispatch(setGenreStart(dispatch));
     try {
-      const res = await axios.get(`${url}/genre`);
+      const res = await axios.get(`${url}genre`);
       dispatch(setGenreSuccess(res));
     } catch (error) {
       console.log(error);
