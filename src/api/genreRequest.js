@@ -13,9 +13,7 @@ const genreRequest = {
   getGenresApi: async (dispatch) => {
     dispatch(setLoadingGetGenre(true));
     try {
-      const res = await axios.get(
-        `${url}/genre`
-      );
+      const res = await axios.get(`${url}genre`);
       dispatch(setItemGenre(res.data));
       dispatch(setLoadingGetGenre(false));
     } catch (error) {
@@ -27,7 +25,7 @@ const genreRequest = {
     dispatch(setLoadingAddGenre(true));
     try {
       axios
-        .post(`${url}/genre/create`, {
+        .post(`${url}genre/create`, {
           label: name,
         })
         .then((response) => {
@@ -49,12 +47,9 @@ const genreRequest = {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const AuthStr = "bearer ".concat(currentUser.accessToken);
     try {
-      const res = await axios.delete(
-        `${url}/genre/${id}`,
-        {
-          headers: { token: AuthStr },
-        }
-      );
+      const res = await axios.delete(`${url}genre/${id}`, {
+        headers: { token: AuthStr },
+      });
       dispatch(setDeleteGenre(res));
       dispatch(setLoadingDeleteGenre(false));
     } catch (error) {

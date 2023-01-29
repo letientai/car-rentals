@@ -20,8 +20,10 @@ import {
   setTotalRentalDays,
 } from "../../redux";
 
-export const DateTime = ({ check }) => {
+export const DateTime = ({ check , birthdayProp}) => {
   const [value, setValue] = React.useState(dayjs(Date.now()));
+  console.log(value);
+  console.log(Date.now("dd/MM/yyyy"));
   const dispatch = useDispatch();
 
   const handleDateTime = (newValue) => {
@@ -34,6 +36,7 @@ export const DateTime = ({ check }) => {
       date,
       age: years,
     };
+    console.log(birthday);
     dispatch(setBirthdayUser(birthday));
     setValue(newValue);
   };
@@ -42,11 +45,12 @@ export const DateTime = ({ check }) => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Stack spacing={3}>
           <DatePicker
+            className={birthdayProp && "disable" || ""}
             disableFuture
             openTo="year"
             views={["year", "month", "day"]}
             renderInput={(params) => <TextField {...params} />}
-            value={value}
+            value={birthdayProp?birthdayProp:value}
             label="Ngày sinh"
             onChange={(newValue) => handleDateTime(newValue)}
             minDateTime={dayjs(value)}

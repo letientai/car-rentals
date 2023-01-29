@@ -136,7 +136,7 @@ const RegisterConponent = () => {
           <Button className="btn__register" type="submit">
             {!currentUser?.isAdmin ? "Đăng ký" : "Tạo tài khoản"}
           </Button>
-          {!currentUser?.isAdmin && (
+          {/* {!currentUser?.isAdmin && (
             <div className="anothe__register">
               <span>Hãy đăng nhập bằng tài khoản</span>
               <div className="register__option">
@@ -150,7 +150,7 @@ const RegisterConponent = () => {
                 </Button>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </form>
     </div>

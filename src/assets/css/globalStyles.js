@@ -58,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
         display : block !important;
     }
     .disable{
+        user-select: none; 
         opacity : 0.6;
         preventDefault: true !important;
         pointer-events: none;
