@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import React, { useEffect } from 'react'
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { carSelector, carsSortSelector, setCarsSortSuccess } from '../../redux';
 import CarCard from '../Global/CarCard';
@@ -10,12 +11,28 @@ const ItemRenderSearch = () => {
     // const dispatch = useDispatch();
     // const {getCars} = useSelector(carSelector);
     const {isLoading, values} = useSelector(carsSortSelector);
+    // const [listCars , setListCars] = useState();
+
     
     const responsive = {
         sm : 12,
         md : 6,
         xs : 12,
     }
+    // useEffect(()=>{
+    //     const url = process.env.REACT_APP_URL_LOCAL;
+    //     const localUser = JSON.parse(localStorage.getItem("currentUser"));
+      
+    //     const AuthStr = "bearer ".concat(localUser.accessToken);
+    //     const fetchListCars = async () => {
+    //         try {
+    //           const res = await axios.get(`${url}/car`);
+    //           setListCars(res)
+    //         } catch (error) {
+    //           console.log(error);
+    //         }
+    //       }
+    // },[])
   return (
     <div className='item__render--search' >
         {isLoading?

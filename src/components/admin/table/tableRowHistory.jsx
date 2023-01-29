@@ -9,7 +9,6 @@ import dateFormat from "dateformat";
 
 export const TableRowHistory = ({ id, list, setList, index }) => {
   const dispatch = useDispatch();
-  console.log(list);
   useEffect(() => {
     rentalRequest.getItemCarRental(id, dispatch, setList);
   }, []);

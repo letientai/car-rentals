@@ -19,7 +19,7 @@ const carRequest = {
   getCarsApi: async (dispatch) => {
     dispatch(setLoadingGetCar(true));
     try {
-      const res = await axios.get(`${url}/car`);
+      const res = await axios.get(`${url}car`);
       dispatch(setItemCar(res.data));
       dispatch(setLoadingGetCar(false));
     } catch (error) {
@@ -31,22 +31,19 @@ const carRequest = {
     dispatch(setItemCarStart());
     dispatch(setLoadingGlobal(true));
     try {
-      const res = await axios.get(`${url}/car/${id}`);
+      const res = await axios.get(`${url}car/${id}`);
       dispatch(setItemCarSuccess(res.data));
       dispatch(setLoadingGlobal(false));
     } catch (error) {
       console.log(error);
       dispatch(setItemCarFailed());
       dispatch(setLoadingGlobal(false));
-
     }
   },
   deleteCar: async (id, dispatch) => {
     dispatch(setDeleteCarStart(dispatch));
     try {
-      const res = await axios.delete(
-        `${url}/car/${id}`
-      );
+      const res = await axios.delete(`${url}car/${id}`);
       dispatch(setDeleteCarSuccess(res));
     } catch (error) {
       console.log(error);
