@@ -19,6 +19,10 @@ export default function AlertDialog({
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const url = process.env.REACT_APP_URL_LOCAL;
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const AuthStr = "bearer ".concat(currentUser.accessToken);
+
 
   React.useEffect(() => {
     setOpen(true);
@@ -27,18 +31,20 @@ export default function AlertDialog({
     setOpen(false);
   }, []);
   const handleAddProduct = () => {
-    console.log(dataProduct?.image);
+    console.log(dataProduct);
     axios
-      .post("http://api-rental-carl.herokuapp.com/car/create", {
+      .post(`${url}car/create`, {
         genre: dataProduct.genre,
         name: dataProduct.productName,
-        unitPrice: parseInt(dataProduct.unitPrice),
-        insuranceFees: parseInt(dataProduct.insuranceFees),
+        unitPrice: dataProduct.unitPrice,
+        insuranceFees: dataProduct.insuranceFees,
         images: dataProduct?.image || "",
-        available: true,
+        // available: true,
         description: dataProduct.description,
         seats: dataProduct.seats,
         fuel: dataProduct.fuel,
+      }, {
+        headers: { token: AuthStr },
       })
       .then(function (response) {
         console.log(response);
@@ -63,7 +69,7 @@ export default function AlertDialog({
   const handleUpdateProduct = () => {
     console.log(dataProduct);
     axios
-      .patch(`http://api-rental-carl.herokuapp.com/car/${id}/edit`, {
+      .patch(`${url}car/${id}/edit`, {
         genre: dataProduct.genre,
         name: dataProduct.productName,
         unitPrice: parseInt(dataProduct.unitPrice),
@@ -74,6 +80,8 @@ export default function AlertDialog({
         seats: dataProduct.seats,
         fuel: dataProduct.fuel,
         // slug: dataProduct.productName,
+      },  {
+        headers: { token: AuthStr },
       })
       .then(function (response) {
         console.log(response);
