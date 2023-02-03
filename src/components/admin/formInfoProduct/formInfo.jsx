@@ -36,16 +36,17 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
     setLoading(true);
     fetchGenre();
   }, []);
+  const url = process.env.REACT_APP_URL_LOCAL;
 
   const fetchGenre = () => {
     axios
-      .get(`http://api-rental-carl.herokuapp.com/genre`)
+      .get(`${url}genre`)
       .then(function (response1) {
         setOptionGenre(response1.data);
         if (!checkAddProduct) {
           //fetchData
           axios
-            .get(`http://api-rental-carl.herokuapp.com/car/${id}`)
+            .get(`${url}car/${id}`)
             .then(function (response2) {
               // handle success
               console.log(response2);
@@ -116,7 +117,7 @@ export const FormInfo = ({ checkAddProduct, btnAddProduct }) => {
       // values.image = image;
     } else {
       values.image = image[0].data_url;
-      console.log(image);
+      console.log("image",image);
     }
     console.log("submit", values);
     if (
