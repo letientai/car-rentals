@@ -49,7 +49,7 @@ const Auth = () => {
             e.stopPropagation();
           }}
           ref={elementAuthCustom} className='auth__user--custom' >
-            {isAdmin && <li onClick={handleNavigateAdmin} >Đến tài trang admin</li>}
+            {isAdmin && <li onClick={handleNavigateAdmin} >Đến trang admin</li>}
             <li onClick={handleManageAcc} >Quản lý tài khoản cá nhân</li>
             <li onClick={handleLogout}>Đăng xuất</li>
           </ul>

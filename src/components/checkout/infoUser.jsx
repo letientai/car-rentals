@@ -31,6 +31,7 @@ export const InfoUser = () => {
         const { data } = await axios.get(`${url}user/${currentUser._id}`, {
           headers: { token: AuthStr },
         });
+        console.log("data", data);
         if (data.authenInfo) {
           const { phone, gplx, dayOfBirth } = data.authenInfo;
           setInitialValues({
@@ -98,7 +99,7 @@ export const InfoUser = () => {
         handleAddInfoUser(infoAuthenUser);
       }
       rentalRequest.carRental(dispatch, info);
-      navigate("/search");
+      navigate("/");
     }
   };
 

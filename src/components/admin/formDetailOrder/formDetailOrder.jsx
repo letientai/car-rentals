@@ -13,7 +13,7 @@ export const FormDetailOrder = (prop) => {
   const data = openForm.values;
 
   useEffect(() => {
-    console.log(data?.plight);
+    console.log(data);
     if (data?.plight === "Vừa đặt") {
       setOrderStatus(1);
       setPlight("Vừa đặt");
@@ -67,7 +67,7 @@ export const FormDetailOrder = (prop) => {
             {data?.user_id?.lastName + " " + data?.user_id?.firstName}
           </div>
           <div className="row">Số điện thoại: {data?.phone}</div>
-          <div className="row">Giấy phép lái xe: {data?.gplx}</div>
+          {/* <div className="row">Giấy phép lái xe: {data?.gplx}</div> */}
           <div className="row">
             Ngày sinh: {dateFormat(data?.birthday, "dd/mm/yyyy")}
           </div>
