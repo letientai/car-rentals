@@ -51,13 +51,9 @@ export const InfoUser = () => {
   // Handle create info authen
   const handleAddInfoUser = async (infoAuthenUser) => {
     try {
-      const data = await axios.post(
-        `${url}/authenInfo/create`,
-        infoAuthenUser,
-        {
-          headers: { token: AuthStr },
-        }
-      );
+      const data = await axios.post(`${url}authenInfo/create`, infoAuthenUser, {
+        headers: { token: AuthStr },
+      });
       console.log(data);
     } catch (error) {
       console.log(error);
