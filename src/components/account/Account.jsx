@@ -102,23 +102,23 @@ const Account = () => {
             </div>
           </Grid>
         </Grid>
-        <Grid className="account__user_info" container>
-          <Grid item className="account__user__info--item" md={3}>
+        <Grid className="account__user_info" container >
+          <Grid item className="account__user__info--item" md={6}>
             <h5 className="info__title">Email</h5>
             <DriveFileRenameOutlineIcon onClick={handleUpdateEmail} />
           </Grid>
-          <Grid item className="account__user__info--item" md={3}>
+          <Grid item className="account__user__info--item" md={6}>
             <h5 className="info__title">Mật khẩu</h5>
             <DriveFileRenameOutlineIcon onClick={handleUpdatePassword} />
           </Grid>
-          <Grid item className="account__user__info--item" md={3}>
+          {/* <Grid item className="account__user__info--item" md={3}>
             <h5 className="info__title">Google</h5>
             <AddLinkOutlinedIcon className="info__link" />
           </Grid>
           <Grid item className="account__user__info--item" md={3}>
             <h5 className="info__title">Facebook</h5>
             <AddLinkOutlinedIcon className="info__link" />
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid className="account__history" container>
           <h3 className="account__history__title">Lịch sử xe thuê</h3>

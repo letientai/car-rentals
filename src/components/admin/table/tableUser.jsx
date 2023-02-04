@@ -51,7 +51,6 @@ export const TableUser = () => {
                   Mật khẩu
                 </TableCell>
                 <TableCell align="left">Tên người dùng</TableCell>
-                <TableCell align="left">IsAdmin</TableCell>
                 <TableCell align="left">Hành động</TableCell>
               </TableRow>
             </TableHead>
@@ -72,7 +71,6 @@ export const TableUser = () => {
                   <TableCell align="left">
                     {item?.lastName + " " + item?.firstName}
                   </TableCell>
-                  <TableCell align="left">{item?.isAdmin.toString()}</TableCell>
                   <TableCell
                     align="right"
                     className="action d-flex "

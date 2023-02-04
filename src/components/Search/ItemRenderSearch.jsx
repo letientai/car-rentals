@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { carSelector, carsSortSelector, setCarsSortSuccess } from '../../redux';
 import CarCard from '../Global/CarCard';
 import "./ItemRenderSearch.scss"
+import { CircularProgress } from "@mui/material";
 
 
 const ItemRenderSearch = () => {
@@ -36,7 +37,7 @@ const ItemRenderSearch = () => {
   return (
     <div className='item__render--search' >
         {isLoading?
-            <div>Loading</div>:
+            <CircularProgress color="success" className='loading'/>:
             <Grid className='item__render--scroll' container >
                 {values[0]?
                     values?.map((item , index)=>{

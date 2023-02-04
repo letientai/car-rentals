@@ -31,10 +31,10 @@ export const FormUser = () => {
           <h5>Thông tin chi tiết</h5>
         </div>
         <div className="infomation_user__content">
-          <div className="row1">
+          {/* <div className="row1">
             <div className="title">Id:</div>
             <div className="content">{getItemUser?.values?._id}</div>
-          </div>
+          </div> */}
           <div className="row1">
             <div className="title"> Họ và tên: </div>
 
@@ -44,20 +44,20 @@ export const FormUser = () => {
                 getItemUser?.values?.firstName}
             </div>
           </div>
-          <div className="row1">
+          {/* <div className="row1">
             <div className="title"> Mật khẩu:</div>
             <div className="content">{getItemUser?.values?.password}</div>
-          </div>
+          </div> */}
           <div className="row1">
             <div className="title"> Email:</div>
             <div className="content">{getItemUser?.values?.email}</div>
           </div>
-          <div className="row1">
+          {/* <div className="row1">
             <div className="title"> Admin:</div>
             <div className="content">
               {getItemUser?.values?.isAdmin.toString()}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="infomation_rented">
